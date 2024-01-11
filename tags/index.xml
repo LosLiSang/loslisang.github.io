@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tags on Hugo Theme Stack Starter</title>
+        <title>Tags on Lisang的Blog</title>
         <link>https://loslisang.github.io/tags/</link>
-        <description>Recent content in Tags on Hugo Theme Stack Starter</description>
+        <description>Recent content in Tags on Lisang的Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 07 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://loslisang.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 11 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://loslisang.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>git</title>
+        <link>https://loslisang.github.io/tags/git/</link>
+        <pubDate>Thu, 11 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://loslisang.github.io/tags/git/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>css</title>
         <link>https://loslisang.github.io/tags/css/</link>
         <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
