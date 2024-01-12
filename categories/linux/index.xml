@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Linux on LisangのBlog</title>
+        <link>https://loslisang.github.io/categories/linux/</link>
+        <description>Recent content in Linux on LisangのBlog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 13 Jan 2024 00:09:24 +0800</lastBuildDate><atom:link href="https://loslisang.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>clash在Linux中如何使用</title>
+        <link>https://loslisang.github.io/p/clash%E5%9C%A8linux%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</link>
+        <pubDate>Sat, 13 Jan 2024 00:09:24 +0800</pubDate>
+        
+        <guid>https://loslisang.github.io/p/clash%E5%9C%A8linux%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</guid>
+        <description>&lt;h2 id=&#34;值得细讲的点&#34;&gt;值得细讲的点&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Linux的Clash，因为在github上，clash删库跑路了，所以现存的clash压缩包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;wget https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;建议自己也存一份&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;curl https://glados.rocks/tools/clash-linux.zip -o clash.zip&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;解压(unzip)&lt;/li&gt;
+&lt;li&gt;上传配置文件(就是机场订阅链接下载下来的哪个yaml文件)&lt;/li&gt;
+&lt;li&gt;启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;./clash-linux-amd64-v1.10.0 -f glados.yaml -d .&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;设置环境变量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.iswiftai.com/posts/clash-linux/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;在 Linux 中使用 Clash | CodeSwift (iswiftai.com)&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

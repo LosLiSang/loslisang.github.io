@@ -6,7 +6,7 @@
         <description>Recent content on LisangのBlog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 12 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://loslisang.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 13 Jan 2024 00:09:24 +0800</lastBuildDate><atom:link href="https://loslisang.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>2023 Summary</title>
         <link>https://loslisang.github.io/p/2023-summary/</link>
         <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
@@ -43,6 +43,34 @@
 &lt;p&gt;我知道我的文笔很差劲，经常是上文不接下文，思维跳转很快，就多多看书、写文字，明年至少看个12本书吧🤭，写24篇博客哈🙂。&lt;/p&gt;
 &lt;p&gt;学术进展缓慢，职业规划不完全。我身边有很多值得我学习的同学，值得我追赶的同学，以他们为榜样，加油💪。&lt;/p&gt;
 &lt;p&gt;24年，少打一点游戏，如果不行就用VB脚本好好惩罚自己，毕竟VB确实很难关掉。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>clash在Linux中如何使用</title>
+        <link>https://loslisang.github.io/p/clash%E5%9C%A8linux%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</link>
+        <pubDate>Sat, 13 Jan 2024 00:09:24 +0800</pubDate>
+        
+        <guid>https://loslisang.github.io/p/clash%E5%9C%A8linux%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</guid>
+        <description>&lt;h2 id=&#34;值得细讲的点&#34;&gt;值得细讲的点&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Linux的Clash，因为在github上，clash删库跑路了，所以现存的clash压缩包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;wget https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;建议自己也存一份&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;curl https://glados.rocks/tools/clash-linux.zip -o clash.zip&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;解压(unzip)&lt;/li&gt;
+&lt;li&gt;上传配置文件(就是机场订阅链接下载下来的哪个yaml文件)&lt;/li&gt;
+&lt;li&gt;启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;./clash-linux-amd64-v1.10.0 -f glados.yaml -d .&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;设置环境变量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.iswiftai.com/posts/clash-linux/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;在 Linux 中使用 Clash | CodeSwift (iswiftai.com)&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
