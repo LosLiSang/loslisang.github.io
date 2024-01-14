@@ -6,7 +6,7 @@
         <description>Recent content in Posts on LisangのBlog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 13 Jan 2024 00:09:24 +0800</lastBuildDate><atom:link href="https://loslisang.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 14 Jan 2024 18:38:40 +0800</lastBuildDate><atom:link href="https://loslisang.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>2023 Summary</title>
         <link>https://loslisang.github.io/p/2023-summary/</link>
         <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
@@ -43,6 +43,42 @@
 &lt;p&gt;我知道我的文笔很差劲，经常是上文不接下文，思维跳转很快，就多多看书、写文字，明年至少看个12本书吧🤭，写24篇博客哈🙂。&lt;/p&gt;
 &lt;p&gt;学术进展缓慢，职业规划不完全。我身边有很多值得我学习的同学，值得我追赶的同学，以他们为榜样，加油💪。&lt;/p&gt;
 &lt;p&gt;24年，少打一点游戏，如果不行就用VB脚本好好惩罚自己，毕竟VB确实很难关掉。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>23年信息奥数教学总结</title>
+        <link>https://loslisang.github.io/p/23%E5%B9%B4%E4%BF%A1%E6%81%AF%E5%A5%A5%E6%95%B0%E6%95%99%E5%AD%A6%E6%80%BB%E7%BB%93/</link>
+        <pubDate>Sun, 14 Jan 2024 18:38:40 +0800</pubDate>
+        
+        <guid>https://loslisang.github.io/p/23%E5%B9%B4%E4%BF%A1%E6%81%AF%E5%A5%A5%E6%95%B0%E6%95%99%E5%AD%A6%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;img src="https://loslisang.github.io/94748376_p0.jpg" alt="Featured image of post 23年信息奥数教学总结" /&gt;&lt;p&gt;说实话当一个老师还是不错的，但是前提是教的不是小学生。&lt;/p&gt;
+&lt;h2 id=&#34;教学的收获&#34;&gt;教学的收获&lt;/h2&gt;
+&lt;h3 id=&#34;编程能力上的收获&#34;&gt;编程能力上的收获&lt;/h3&gt;
+&lt;p&gt;感触最大的就是我有了一个大致的知识框架，什么OJ，无非就是学习基本语法之后去学数据结构和算法。我自己也在暑假的时候复习了一下动态规划和图的搜索，这一个是我编程能里最大的提升。CSP考试用的主要是C++语言，我不是很熟悉C++的语法和容器，有些代码就写的比较复杂。做题量其实也不算大，&lt;/p&gt;
+&lt;h3 id=&#34;教学上的收获&#34;&gt;教学上的收获&lt;/h3&gt;
+&lt;p&gt;因为我是作为一个老师去教学C++的知识，现在还主要是语法阶段，我感觉我教的就不算特别好，有些东西如果不在脑子里思考过一遍，还真的不一定能讲出来。&lt;/p&gt;
+&lt;p&gt;有一次就是讲&amp;quot;添加逗号&amp;quot;的问题，我就语塞了，之前只是自己做出来了，但是根本没想过怎么讲这道题目，这是最大的问题。自己理解了，但是还没有理解完全，不能够正常讲出来，让同学们听懂。&lt;/p&gt;
+&lt;p&gt;而且大班教学，很容易就产生能力不均匀的情况，很想把同学们统一起来讲，但是大家能力参差不齐，就会导致有些同学觉得太简单然后不听，进一步导致重要的东西他们没听到，我其实也很苦恼。&lt;/p&gt;
+&lt;p&gt;之后我教课的流程应该会大大改变，例如：强调做题，强调理解，而不是抄代码，当然让他们不得不抄代码就是因为我教的不算好。&lt;/p&gt;
+&lt;p&gt;讲题的步骤也可以进行改变，例如先做5min，然后讲思路，不写代码，再让他们做一会，最后写代码，不过这种教学方式应该对题目的要求比较大。&lt;/p&gt;
+&lt;p&gt;让他们做笔记，我自己也可以把笔记再课堂上做好然后发给他们，当作上课的讲义嘛。&lt;/p&gt;
+&lt;h2 id=&#34;遇到的一些事情&#34;&gt;遇到的一些事情&lt;/h2&gt;
+&lt;h3 id=&#34;事件&#34;&gt;事件&lt;/h3&gt;
+&lt;p&gt;这之中我遇到了一个同学，他上课看起来是在认真听课，但是实际上不是，也经常经常请假，导致在本身基础就不算好的情况，就完全跟不上课程的进度了。在最后的器模测试中，甚至连&lt;code&gt;cout &amp;lt;&amp;lt; &amp;quot;ABCCD&amp;quot;;&lt;/code&gt;都写不出来，最后呢，他被其他同学说是“零分大王”，虽然其他同学并不知道他是谁，但是就在教室里一直讲，这一点非常不好，但是我却默许了这种行为，我觉得我做的实在是太差劲了，没能制止其他同学对他的霸凌，最后下课的路上，他打了其他同学一拳，这个时候我还不知道，然后我才发现他不对劲了，他很委屈。我真的需要对此做出反思。&lt;/p&gt;
+&lt;h3 id=&#34;反思&#34;&gt;反思&lt;/h3&gt;
+&lt;p&gt;如果要反思的话，首先得要怪我。我自己不是很懂小学生的思维，作为一个老师我是不合格的，我对我的教学对象的心理了解的太少了，这是最基本的。&lt;/p&gt;
+&lt;p&gt;其次，绰号什么的，只有亲近的人说才会觉得舒服，如果是一个不认识的人这样说，只会认为是在嘲讽自己，我没有带入到他的处境里。现在仔细想想，给他起绰号的同学其实没啥恶意，但是没有把握好距离，如果他们俩是好朋友的话那应该没关系，问题就在于他们不是盆友。&lt;/p&gt;
+&lt;h2 id=&#34;之后的打算&#34;&gt;之后的打算&lt;/h2&gt;
+&lt;p&gt;教学可能确实不太适合我，但是我从中得到了很多锻炼，很多是为人处世的，和很多家长进行沟通，教导小学生，这都不简单。&lt;/p&gt;
+&lt;p&gt;之后我要提升自己的程序设计能力，就是多做OJ题，还要&lt;strong&gt;多写题解&lt;/strong&gt;，争取让不懂的人也能看懂，这才是一个做老师的正确姿势。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loslisang.github.io/102238754_p0.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
