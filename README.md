@@ -1,5 +1,7 @@
 # Lisang's Blog
 
+[![Hexo Deploy](https://github.com/LosLiSang/loslisang.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/LosLiSang/loslisang.github.io/actions/workflows/deploy.yml)
+
 This is the source code repository for Lisang's Blog, a personal blog where I share my thoughts, experiences, and projects related to technology, programming, and more.
 
 ## Features
