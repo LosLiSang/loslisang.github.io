@@ -1,0 +1,40 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - main  # 监控 main 分支，一旦有 push 就触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          submodules: true # 如果主题是 git submodule 方式安装的，必须开启这个
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # 建议用较新版本
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Generate Static Files
+        run: |
+          npx hexo clean
+          npx hexo g
+          touch ./public/.nojekyll  # <--- 加上这一行！
+
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} # 对应刚才在 Settings 里填的名字
+          publish_dir: ./public  # 把 hexo g 生成的 public 文件夹推上去
+          publish_branch: gh-pages # 推送到 gh-pages 分支
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
