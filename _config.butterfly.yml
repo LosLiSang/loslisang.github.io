@@ -11,7 +11,7 @@
 
 nav:
   # Navigation bar logo image
-  logo:
+  logo: /img/favicon.png
   display_title: true
   display_post_title: true
   # Whether to fix navigation bar
@@ -46,8 +46,8 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  fab fa-github: https://github.com/LosLisang || Github || '#24292e'
+  fas fa-envelope: mailto:lxtoact@gmail.com || Email || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
@@ -56,14 +56,14 @@ social:
 favicon: /img/favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/nanami.jpg
   effect: false
 
 # Disable all banner images
 disable_top_img: false
 
 # If the banner of page not setting, it will show the default_top_img
-default_top_img:
+default_top_img: /img/top.jpg
 
 # The banner image of index page
 index_img:
@@ -88,12 +88,12 @@ category_img:
 category_per_img:
 
 # The background image of footer
-footer_img: false
+footer_img: /img/footer.png
 
 # Website Background
 # Can set it to color, image URL or an array containing colors and/or image URLs
 # If an array is provided, a random background will be selected from the array on each load
-background:
+background: /img/bg.png
 
 cover:
   # Disable the cover or not
@@ -102,18 +102,42 @@ cover:
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover:
-    # - xxx.jpg
+    - /img/default_cover/photo_2025-11-26_14-45-37.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-03.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-15.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-21.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-24.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-31.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-34.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-40.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-44.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-47.jpg
+    - /img/default_cover/photo_2025-12-06_19-08-52.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-04.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-19.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-28.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-32.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-37.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-40.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-44.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-52.jpg
+    - /img/default_cover/photo_2025-12-06_19-09-55.jpg
+    - /img/default_cover/photo_2025-12-06_19-10-05.jpg
+    - /img/default_cover/photo_2025-12-06_19-10-08.jpg
+    - /img/default_cover/photo_2025-12-06_19-10-14.jpg
+    - /img/default_cover/photo_2025-12-06_19-10-18.jpg
+    - /img/default_cover/水の骑士.jpg
 
 # Replace Broken Images
 error_img:
   flink: /img/friend_404.gif
-  post_page: /img/404.jpg
+  post_page: /img/error.png
 
 # A simple 404 page
 error_404:
   enable: false
   subtitle: 'Page Not Found'
-  background: /img/error-page.png
+  background: /img/404.png
 
 post_meta:
   # Home Page
@@ -149,7 +173,7 @@ index_top_img_height:
 
 # The subtitle on homepage
 subtitle:
-  enable: false
+  enable: true
   # Typewriter Effect
   effect: true
   # Customize typed.js
@@ -165,7 +189,8 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-
+    - 从感性到因果，从因果到辩证，从辩证到系统
+    - Sense the world, Trace the cause, Weigh the paradox, See the whole.
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
 # 2: Cover on the right, info on the left
@@ -271,141 +296,172 @@ footer:
 # --------------------------------------
 
 aside:
+  # 是否启用侧边栏
   enable: true
+  # 是否默认隐藏侧边栏
   hide: false
-  # Show the button to hide the aside in bottom right button
+  # 是否在右下角显示隐藏侧边栏的按钮
   button: true
+  # 移动设备上是否启用侧边栏
   mobile: true
-  # Position: left / right
+  # 侧边栏位置：left / right
   position: right
   display:
+    # 归档页面是否显示侧边栏
     archive: true
+    # 标签页面是否显示侧边栏
     tag: true
+    # 分类页面是否显示侧边栏
     category: true
   card_author:
+    # 是否显示作者信息卡片
     enable: true
+    # 作者描述
     description:
     button:
+      # 是否显示按钮
       enable: true
+      # 按钮图标
       icon: fab fa-github
+      # 按钮文本
       text: Follow Me
-      link: https://github.com/xxxxxx
+      # 按钮链接
+      link: https://github.com/LosLisang
   card_announcement:
+    # 是否显示公告卡片
     enable: true
-    content: This is my Blog
+    # 公告内容
+    content: 欢迎来到我的博客！
   card_recent_post:
+    # 是否显示最近文章卡片
     enable: true
-    # If set 0 will show all
+    # 显示文章数量，0 表示显示所有
     limit: 5
-    # Sort: date / updated
+    # 排序方式：date / updated
     sort: date
     sort_order:
   card_newest_comments:
+    # 是否显示最新评论卡片
     enable: false
     sort_order:
+    # 显示评论数量
     limit: 6
-    # Unit: mins, save data to localStorage
+    # 单位：分钟，保存数据到 localStorage
     storage: 10
+    # 是否显示头像
     avatar: true
   card_categories:
+    # 是否显示分类卡片
     enable: true
-    # If set 0 will show all
+    # 显示分类数量，0 表示显示所有
     limit: 8
-    # Choose: none / true / false
+    # 选择：none / true / false
     expand: none
     sort_order:
   card_tags:
+    # 是否显示标签卡片
     enable: true
-    # If set 0 will show all
+    # 显示标签数量，0 表示显示所有
     limit: 40
+    # 是否启用颜色
     color: false
-    # Order of tags, random/name/length
+    # 标签排序方式：random/name/length
     orderby: random
-    # Sort of order. 1, asc for ascending; -1, desc for descending
+    # 排序顺序：1 表示升序，-1 表示降序
     order: 1
     sort_order:
   card_archives:
+    # 是否显示归档卡片
     enable: true
-    # Type: monthly / yearly
+    # 归档类型：monthly / yearly
     type: monthly
-    # Eg: YYYY年MM月
+    # 日期格式，例如：YYYY年MM月
     format: MMMM YYYY
-    # Sort of order. 1, asc for ascending; -1, desc for descending
+    # 排序顺序：1 表示升序，-1 表示降序
     order: -1
-    # If set 0 will show all
+    # 显示归档数量，0 表示显示所有
     limit: 8
     sort_order:
   card_post_series:
+    # 是否显示系列文章卡片
     enable: true
-    # The title shows the series name
+    # 标题显示系列名称
     series_title: false
-    # Order by title or date
+    # 排序方式：title 或 date
     orderBy: 'date'
-    # Sort of order. 1, asc for ascending; -1, desc for descending
+    # 排序顺序：1 表示升序，-1 表示降序
     order: -1
   card_webinfo:
+    # 是否显示网站信息卡片
     enable: true
+    # 是否显示文章数量
     post_count: true
+    # 是否显示最后推送日期
     last_push_date: true
     sort_order:
-    # Time difference between publish date and now
-    # Formal: Month/Day/Year Time or Year/Month/Day Time
-    # Leave it empty if you don't enable this feature
+    # 发佈日期与当前日期的时间差
+    # 格式：Month/Day/Year Time 或 Year/Month/Day Time
+    # 如果不启用此功能，请留空
     runtime_date:
 
 # --------------------------------------
-# Bottom right button
+# 右下角按钮设置
 # --------------------------------------
 
-# The distance between the bottom right button and the bottom (default unit: px)
+# 右下角按钮与底部的距离（默认单位：px）
 rightside_bottom:
 
-# Conversion between Traditional and Simplified Chinese
+# 简繁转换设置
 translate:
+  # 是否启用简繁转换
   enable: false
-  # The text of a button
+  # 按钮文本
   default: 繁
-  # the language of website (1 - Traditional Chinese/ 2 - Simplified Chinese）
+  # 网站语言（1 - 繁体中文 / 2 - 简体中文）
   defaultEncoding: 2
-  # Time delay
+  # 转换延迟
   translateDelay: 0
-  # The text of the button when the language is Simplified Chinese
+  # 按钮在简体中文时的文本
   msgToTraditionalChinese: '繁'
-  # The text of the button when the language is Traditional Chinese
-  msgToSimplifiedChinese: '簡'
+  # 按钮在繁体中文时的文本
+  msgToSimplifiedChinese: '简'
 
-# Read Mode
+# 閲读模式
 readmode: true
 
-# Dark Mode
+# 暗黑模式设置
 darkmode:
+  # 是否启用暗黑模式
   enable: true
-  # Toggle Button to switch dark/light mode
+  # 切换暗黑/明亮模式的按钮
   button: true
-  # Switch dark/light mode automatically
-  # autoChangeMode: 1  Following System Settings, if the system doesn't support dark mode, it will switch dark mode between 6 pm to 6 am
-  # autoChangeMode: 2  Switch dark mode between 6 pm to 6 am
-  # autoChangeMode: false
+  # 是否自动切换暗黑/明亮模式
+  # autoChangeMode: 1  跟随系统设置，如果系统不支持暗黑模式，则在晚上 6 点到早上 6 点之间切换暗黑模式
+  # autoChangeMode: 2  在晚上 6 点到早上 6 点之间切换暗黑模式
+  # autoChangeMode: false  不自动切换
   autoChangeMode: false
-  # Set the light mode time. The value is between 0 and 24. If not set, the default value is 6 and 18
+  # 设置明亮模式时间，值在 0 到 24 之间。如果未设置，默认值为 6 和 18
   start:
   end:
 
-# Show scroll percent in scroll-to-top button
-rightside_scroll_percent: false
+# 在返回顶部按钮中显示滚动百分比
+rightside_scroll_percent: true
 
-# Don't modify the following settings unless you know how they work
-# Choose: readmode,translate,darkmode,hideAside,toc,chat,comment
-# Don't repeat the same value
+# 不要修改以下设置，除非你知道它们的工作原理
+# 选择：readmode,translate,darkmode,hideAside,toc,chat,comment
+# 不要重复相同的值
 rightside_item_order:
+  # 是否启用右侧项目顺序
   enable: false
-  # Default: readmode,translate,darkmode,hideAside
+  # 隐藏的默认项目：readmode,translate,darkmode,hideAside
   hide:
-  # Default: toc,chat,comment
+  # 显示的默认项目：toc,chat,comment
   show:
 
-# Animation for the bottom right config button
+# 右下角配置按钮动画效果
 rightside_config_animation: true
+
+
 
 # --------------------------------------
 # Global Settings
@@ -413,11 +469,11 @@ rightside_config_animation: true
 
 anchor:
   # When you scroll, the URL will update according to header id.
-  auto_update: false
+  auto_update: true
   # Click the headline to scroll and update the anchor
-  click_to_scroll: false
+  click_to_scroll: true
 
-photofigcaption: false
+photofigcaption: true
 
 copy:
   enable: true
@@ -808,7 +864,7 @@ display_mode: light
 
 # Configuration for beautifying the content of the article
 beautify:
-  enable: false
+  enable: true
   # Specify the field to beautify (site or post)
   field: post
   # Specify the icon to be used as a prefix for the title, such as '\f0c1'
@@ -819,15 +875,25 @@ beautify:
 # Global font settings
 # Don't modify the following settings unless you know how they work
 font:
-  global_font_size:
-  code_font_size:
-  font_family:
-  code_font_family:
+  global_font_size: 16px
+  code_font_size: 16px  # 建议填上，不然代码块可能会默认变小
+  # 关键点：英文在前，中文在后，最后加通用兜底
+  font_family: 
+    - "SimSun"
+    - "STSong"
+    - "serif"
+  code_font_family: 
+    - "Monaspace Neon"
+    - "Consolas"
+    - "Monaco"
+    - "monospace"
+
 
 # Font settings for the site title and site subtitle
 blog_title_font:
-  font_link:
-  font_family:
+  font_link: 
+  font_family: 
+    - "Monaco"
 
 # The setting of divider icon
 hr_icon:
@@ -891,11 +957,23 @@ click_heart:
 
 # Mouse click effects: words
 clickShowText:
-  enable: false
+  enable: true
   text:
-    # - I
-    # - LOVE
-    # - YOU
+    - 你点我干嘛
+    - 今天写博客了吗
+    - 又摸鱼了哦
+    - 不许划水
+    - 再点就下班
+    - BUG 都修完了吗
+    - 我超忙的
+    - 这其实是个彩蛋
+    - 别点了会秃头
+    - 先喝口水再写
+    - 已经很晚啦
+    - 代码别乱改
+    - 记得提交Git
+    - TODO 写在心里了
+    - 这下真的最后一行了
   fontSize: 15px
   random: false
   mobile: false
@@ -908,7 +986,7 @@ clickShowText:
 # https://github.com/francoischalifour/medium-zoom
 # https://fancyapps.com/fancybox/
 # Leave it empty if you don't need lightbox
-lightbox:
+lightbox: fancybox
 
 # --------------------------------------
 # Tag Plugins settings
