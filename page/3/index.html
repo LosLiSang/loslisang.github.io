@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lisang's Blog</title><meta name="author" content="Lisang"><meta name="copyright" content="Lisang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Lisang&#39;s Blog">
+<meta property="og:url" content="https://loslisang.github.io/page/3/index.html">
+<meta property="og:site_name" content="Lisang&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://loslisang.github.io/img/nanami.jpg">
+<meta property="article:author" content="Lisang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loslisang.github.io/img/nanami.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://loslisang.github.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.4/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lisang\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/bg.png);"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/top.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/favicon.png" alt="Logo"><span class="site-name">Lisang's Blog</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Lisang's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/LosLisang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxtoact@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/15/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/LeetCode/LeetCode%2082.%20%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20II/" title="LeetCode 82. 删除排序链表中的重复元素 II"><img class="post-bg" src="/img/default_cover/photo_2025-12-06_19-08-40.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="LeetCode 82. 删除排序链表中的重复元素 II"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/15/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/LeetCode/LeetCode%2082.%20%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20II/" title="LeetCode 82. 删除排序链表中的重复元素 II">LeetCode 82. 删除排序链表中的重复元素 II</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-15T11:40:04.000Z" title="Created 2024-01-15 11:40:04">2024-01-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="content">82. 删除排序链表中的重复元素 II 题目描述给定一个已排序的链表的头 head ， 删除原始链表中所有重复数字的节点，只留下不同的数字 。返回 已排序的链表 。 示例 题解首先，链表是排序过的，所以相同的节点肯定是连续的，只需要遍历一遍就能把所有相同的节点删除 记pre为去重链表的遍历节点itr的前一个节点。（我们从前往后遍历，前面的链表就是去除过后的链表）  如果itr.val &#x3D;&#x3D; itr.next.val，那我们就记flag为当前遍历节点的值，令flag=itr.val，不断向后遍历令itr &#x3D; itr.next，直到，itr.next.val !&#x3D; flag 或者 itr.next &#x3D;&#x3D; null。然后让pre.next &#x3D; itr.next 如果itr.val !&#x3D; itr.next.val，那么就说明itr不是冗余节点，则不必删除，让pre &#x3D; itr即可  代码1234567891011121314151617181920212223class Solution&#123;...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/15/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/LeetCode/LeetCode%20143.%20%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/" title="LeetCode 143. 重排链表"><img class="post-bg" src="/img/default_cover/photo_2025-12-06_19-09-44.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="LeetCode 143. 重排链表"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/15/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/LeetCode/LeetCode%20143.%20%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/" title="LeetCode 143. 重排链表">LeetCode 143. 重排链表</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-15T11:32:06.000Z" title="Created 2024-01-15 11:32:06">2024-01-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="content">题目描述给定一个单链表 L 的头节点 head ，单链表 L 表示为：  L0 → L1 → … → Ln - 1 → Ln  请将其重新排列后变为：  L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …  不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 题解解法一：暴力解第i次循环都把最后一个节点移动到第2*i-1个节点后面，当然不是用for循环，只是代码运行的时候链表内部是这样的过程。 记itr为从前往后遍历的节点，只要itr.next不为null，就一直做以下循环  找到最后一个节点的前一个节点记为pre，最后一个节点记为last &#x3D; pre.next 把最后一个节点删除，插入到第itr的后面 令itr前移动两个单位itr &#x3D; itr.next.next  步骤2的Code 123pre.next = last.next;last.next = itr.next;itr.next = last  代码123456789101112131415161718192021class Solution &#123;   ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/14/B-%E7%94%9F%E6%B4%BB/Summary/23%E5%B9%B4%E4%BF%A1%E6%81%AF%E5%A5%A5%E6%95%B0%E6%95%99%E5%AD%A6%E6%80%BB%E7%BB%93/" title="23年信息奥数教学总结"><img class="post-bg" src="https://raw.githubusercontent.com/LosLiSang/picgo/main/94748376_p0.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="23年信息奥数教学总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/14/B-%E7%94%9F%E6%B4%BB/Summary/23%E5%B9%B4%E4%BF%A1%E6%81%AF%E5%A5%A5%E6%95%B0%E6%95%99%E5%AD%A6%E6%80%BB%E7%BB%93/" title="23年信息奥数教学总结">23年信息奥数教学总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-14T10:38:40.000Z" title="Created 2024-01-14 10:38:40">2024-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></span></div><div class="content">说实话当一个老师还是不错的，但是前提是教的不是小学生。 教学的收获编程能力上的收获感触最大的就是我有了一个大致的知识框架，什么OJ，无非就是学习基本语法之后去学数据结构和算法。我自己也在暑假的时候复习了一下动态规划和图的搜索，这一个是我编程能里最大的提升。CSP考试用的主要是C++语言，我不是很熟悉C++的语法和容器，有些代码就写的比较复杂。做题量其实也不算大， 教学上的收获因为我是作为一个老师去教学C++的知识，现在还主要是语法阶段，我感觉我教的就不算特别好，有些东西如果不在脑子里思考过一遍，还真的不一定能讲出来。 有一次就是讲”添加逗号”的问题，我就语塞了，之前只是自己做出来了，但是根本没想过怎么讲这道题目，这是最大的问题。自己理解了，但是还没有理解完全，不能够正常讲出来，让同学们听懂。 而且大班教学，很容易就产生能力不均匀的情况，很想把同学们统一起来讲，但是大家能力参差不齐，就会导致有些同学觉得太简单然后不听，进一步导致重要的东西他们没听到，我其实也很苦恼。 之后我教课的流程应该会大大改变，例如：强调做题，强调理解，而不是抄代码，当然让他们不得不抄代码就是因为我教的不算好。...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/12/B-%E7%94%9F%E6%B4%BB/Summary/2023%20Summary/" title="2023 Summary"><img class="post-bg" src="/img/default_cover/photo_2025-12-06_19-08-44.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="2023 Summary"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/12/B-%E7%94%9F%E6%B4%BB/Summary/2023%20Summary/" title="2023 Summary">2023 Summary</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-12T00:00:00.000Z" title="Created 2024-01-12 00:00:00">2024-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></span></div><div class="content">总结23年是我本科毕业地一年，是疫情结束的一年，研究生入学的一年。今年我读了很多本书，和她去了很多地方，我觉得这就是我这一年最宝贵的，最有价值的东西。 书籍就微信读书上，我就读了8本书《球状闪电》、《蛙》、《可能性的艺术》、《浅薄》、《浪潮之巅》、《置身事内》、《今日简史》等等，还有一些轻小说就不必翻出来讲了。其中大部分都是和社会相关的，批判现实的不公、贫富差距过大，还有讲述历史的优秀书籍。  旅游今年去了赣州、广州、舟山、宁波、青岛、长沙、桂林、阳朔、柳州，很可惜我不是一个喜欢拍照的人，没有保留几张好看的照片，就用文字浅浅地记录一下今年地旅行。 为什么要去广州呢？因为她在，不在乎什么地点，其实只要有她就行，虽然去了很多次广州，但是丝毫没有厌倦这个城市，现在我还是怀念广州的美食：隆江猪脚饭、猪杂汤粉、牛肉稞条等等。最想的事情就是和她去吃海底捞，不知为什么，就是觉得在海底捞会很放松。广州的风土人情总让人很惬意。 舟山，在舟山我的印象估计只有那次早早起床去海边看的日出了吧，很震惊呀，感觉生活就是为此而存在的。日出和大海，总给人一种希望，一天刚刚开始，一切皆有可能。 宁波，我对宁波的印...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/01/11/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/CLI/Git/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" title="git分布式管理工具使用"><img class="post-bg" src="/img/default_cover/photo_2025-12-06_19-09-19.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="git分布式管理工具使用"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/11/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/CLI/Git/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" title="git分布式管理工具使用">git分布式管理工具使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-11T00:00:00.000Z" title="Created 2024-01-11 00:00:00">2024-01-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="content">创建一个git仓库git init git add (.) 提交到暂存区 git commit -m &lt;&gt; git log &lt;--stat&gt; git diff &lt;commit-id&gt; git reset --hard &lt;commit-id&gt; git checkout &lt;commit-id&gt; git branch git checkout -b develop $master git merge develop git config修改某些属性git config --global &lt;properity&gt; &lt;value&gt; eg: 1234567git config --global user.namegit config --global user.emailgit config --global http.sslverify false 关闭验证ssl证书git config --global http.sslBackend schannel   查看属性git config --list --s...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/nanami.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Lisang</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LosLisang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/LosLisang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxtoact@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/C-%E9%83%A8%E7%BD%B2%E5%B0%8F%E5%BA%94%E7%94%A8/pikpak-with-webdav/" title="WebDAV 入门指南：把云盘挂载成本地硬盘"><img src="/img/default_cover/photo_2025-12-06_19-08-15.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="WebDAV 入门指南：把云盘挂载成本地硬盘"/></a><div class="content"><a class="title" href="/2025/12/06/C-%E9%83%A8%E7%BD%B2%E5%B0%8F%E5%BA%94%E7%94%A8/pikpak-with-webdav/" title="WebDAV 入门指南：把云盘挂载成本地硬盘">WebDAV 入门指南：把云盘挂载成本地硬盘</a><time datetime="2025-12-06T13:00:05.000Z" title="Created 2025-12-06 13:00:05">2025-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part3-%E8%A1%A8-%E6%9D%A5%E8%87%AA%E6%B7%B1%E6%B8%8A%E7%9A%84%E8%99%9A%E7%A9%BA/" title="恶役千金的矜持-Part3-表-来自深渊的虚空"><img src="/img/default_cover/photo_2025-12-06_19-08-21.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-Part3-表-来自深渊的虚空"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part3-%E8%A1%A8-%E6%9D%A5%E8%87%AA%E6%B7%B1%E6%B8%8A%E7%9A%84%E8%99%9A%E7%A9%BA/" title="恶役千金的矜持-Part3-表-来自深渊的虚空">恶役千金的矜持-Part3-表-来自深渊的虚空</a><time datetime="2025-03-17T17:11:32.000Z" title="Created 2025-03-17 17:11:32">2025-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/%E9%A2%9D%E5%A4%96/" title="恶役千金的矜持-额外"><img src="/img/default_cover/photo_2025-12-06_19-09-52.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-额外"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/%E9%A2%9D%E5%A4%96/" title="恶役千金的矜持-额外">恶役千金的矜持-额外</a><time datetime="2025-03-17T17:11:28.000Z" title="Created 2025-03-17 17:11:28">2025-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E9%87%8C-%E6%9D%A5%E8%87%AA%E9%82%AA%E6%81%B6%E4%B9%8B%E8%8A%B1%E7%9A%84%E5%B8%8C%E6%9C%9B/" title="恶役千金的矜持-Part2-里-来自邪恶之花的希望"><img src="/img/default_cover/photo_2025-12-06_19-10-05.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-Part2-里-来自邪恶之花的希望"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E9%87%8C-%E6%9D%A5%E8%87%AA%E9%82%AA%E6%81%B6%E4%B9%8B%E8%8A%B1%E7%9A%84%E5%B8%8C%E6%9C%9B/" title="恶役千金的矜持-Part2-里-来自邪恶之花的希望">恶役千金的矜持-Part2-里-来自邪恶之花的希望</a><time datetime="2025-03-17T17:11:10.000Z" title="Created 2025-03-17 17:11:10">2025-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E8%A1%A8-%E8%87%B4%E4%BD%A0%E5%8D%B3%E5%B0%86%E5%88%B0%E6%9D%A5%E7%9A%84%E7%BB%9D%E6%9C%9B/" title="恶役千金的矜持-Part2-表-致你即将到来的绝望"><img src="/img/default_cover/photo_2025-12-06_19-08-31.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-Part2-表-致你即将到来的绝望"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E8%A1%A8-%E8%87%B4%E4%BD%A0%E5%8D%B3%E5%B0%86%E5%88%B0%E6%9D%A5%E7%9A%84%E7%BB%9D%E6%9C%9B/" title="恶役千金的矜持-Part2-表-致你即将到来的绝望">恶役千金的矜持-Part2-表-致你即将到来的绝望</a><time datetime="2025-03-17T17:10:55.000Z" title="Created 2025-03-17 17:10:55">2025-03-17</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">小应用</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/"><span class="card-category-list-name">生活</span><span class="card-category-list-count">17</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="card-category-list-name">计算机</span><span class="card-category-list-count">4</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/" style="font-size: 1.5em; color: #99a9bf">恶役千金的矜持</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 1.1em; color: #999">云盘</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">读书笔记</a> <a href="/tags/PIKPAK/" style="font-size: 1.1em; color: #999">PIKPAK</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.1em; color: #999">生活</a> <a href="/tags/WEBDAV/" style="font-size: 1.1em; color: #999">WEBDAV</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 1.1em; color: #999">思考</a> <a href="/tags/LeetCode/" style="font-size: 1.3em; color: #99a1ac">LeetCode</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.3em; color: #99a1ac">链表</a> <a href="/tags/%E7%A3%81%E5%8A%9B%E9%93%BE%E6%8E%A5/" style="font-size: 1.1em; color: #999">磁力链接</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              三月 2025
+            </span>
+            <span class="card-archive-list-count">11</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/08/">
+            <span class="card-archive-list-date">
+              八月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/07/">
+            <span class="card-archive-list-date">
+              七月 2024
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/01/">
+            <span class="card-archive-list-date">
+              一月 2024
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-12-06T13:19:38.414Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Lisang</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3-b2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3-b2"></script><script src="/js/main.js?v=5.5.3-b2"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.4/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["从感性到因果，从因果到辩证，从辩证到系统","Sense the world, Trace the cause, Weigh the paradox, See the whole."].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["从感性到因果，从因果到辩证，从辩证到系统","Sense the world, Trace the cause, Weigh the paradox, See the whole."])
+}
+typedJSFn.run(subtitleType)</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="你点我干嘛,今天写博客了吗,又摸鱼了哦,不许划水,再点就下班,BUG 都修完了吗,我超忙的,这其实是个彩蛋,别点了会秃头,先喝口水再写,已经很晚啦,代码别乱改,记得提交Git,TODO 写在心里了,这下真的最后一行了" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

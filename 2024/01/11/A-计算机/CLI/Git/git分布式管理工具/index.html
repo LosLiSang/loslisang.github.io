@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="zh-cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>git分布式管理工具使用 | Lisang's Blog</title><meta name="author" content="Lisang"><meta name="copyright" content="Lisang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="git分布式管理工具使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git分布式管理工具使用">
+<meta property="og:url" content="https://loslisang.github.io/2024/01/11/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/CLI/Git/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="Lisang&#39;s Blog">
+<meta property="og:description" content="git分布式管理工具使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://loslisang.github.io/img/default_cover/photo_2025-12-06_19-09-19.jpg">
+<meta property="article:published_time" content="2024-01-11T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-06T13:19:27.853Z">
+<meta property="article:author" content="Lisang">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loslisang.github.io/img/default_cover/photo_2025-12-06_19-09-19.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "git分布式管理工具使用",
+  "url": "https://loslisang.github.io/2024/01/11/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/CLI/Git/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/",
+  "image": "https://loslisang.github.io/img/default_cover/photo_2025-12-06_19-09-19.jpg",
+  "datePublished": "2024-01-11T00:00:00.000Z",
+  "dateModified": "2025-12-06T13:19:27.853Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Lisang",
+      "url": "https://loslisang.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://loslisang.github.io/2024/01/11/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/CLI/Git/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.4/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'git分布式管理工具使用',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/bg.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/default_cover/photo_2025-12-06_19-09-19.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/favicon.png" alt="Logo"><span class="site-name">Lisang's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">git分布式管理工具使用</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">git分布式管理工具使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-01-11T00:00:00.000Z" title="Created 2024-01-11 00:00:00">2024-01-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-12-06T13:19:27.853Z" title="Updated 2025-12-06 13:19:27">2025-12-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="创建一个git仓库"><a href="#创建一个git仓库" class="headerlink" title="创建一个git仓库"></a>创建一个git仓库</h2><p><code>git init</code></p>
+<p><code>git add (.)</code> 提交到暂存区</p>
+<p><code>git commit -m &lt;&gt;</code></p>
+<p><code>git log &lt;--stat&gt;</code></p>
+<p><code>git diff &lt;commit-id&gt;</code></p>
+<p><code>git reset --hard &lt;commit-id&gt;</code></p>
+<p><code>git checkout &lt;commit-id&gt;</code></p>
+<p><code>git branch</code></p>
+<p><code>git checkout -b develop</code></p>
+<p><code>$master git merge develop</code></p>
+<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><h3 id="修改某些属性"><a href="#修改某些属性" class="headerlink" title="修改某些属性"></a>修改某些属性</h3><p><code>git config --global &lt;properity&gt; &lt;value&gt;</code></p>
+<p>eg:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name</span><br><span class="line"></span><br><span class="line">git config --global user.email</span><br><span class="line"></span><br><span class="line">git config --global http.sslverify <span class="literal">false</span> 关闭验证ssl证书</span><br><span class="line"></span><br><span class="line">git config --global http.sslBackend schannel </span><br></pre></td></tr></table></figure>
+
+<h3 id="查看属性"><a href="#查看属性" class="headerlink" title="查看属性"></a>查看属性</h3><p><code>git config --list --show-origin</code></p>
+<h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><h3 id="携带参数"><a href="#携带参数" class="headerlink" title="携带参数"></a>携带参数</h3><p>eg:<br><code>git -c http.sslVerify=false clone &lt;URL&gt;</code></p>
+<h2 id="本地仓库和远程仓库绑定-远程分支"><a href="#本地仓库和远程仓库绑定-远程分支" class="headerlink" title="本地仓库和远程仓库绑定(远程分支)"></a>本地仓库和远程仓库绑定(远程分支)</h2><p><code>git remote remove origin</code></p>
+<p><code>git remote add origin &quot;https://github.com/LosLiSang/loslisang.github.io.git&quot;</code></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://xugaoxiang.com/2021/03/17/git-clone-ssl-certificate-problem-unable-to-get-local-issuer-certificate/">迷途小书童的Note迷途小书童的Note (xugaoxiang.com)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://loslisang.github.io">Lisang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://loslisang.github.io/2024/01/11/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/CLI/Git/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">https://loslisang.github.io/2024/01/11/A-%E8%AE%A1%E7%AE%97%E6%9C%BA/CLI/Git/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/git/">git</a></div><div class="post-share"><div class="social-share" data-image="/img/default_cover/photo_2025-12-06_19-09-19.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2024/01/12/B-%E7%94%9F%E6%B4%BB/Summary/2023%20Summary/" title="2023 Summary"><img class="cover" src="/img/default_cover/photo_2025-12-06_19-08-44.jpg" onerror="onerror=null;src='/img/error.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">2023 Summary</div></div><div class="info-2"><div class="info-item-1">总结23年是我本科毕业地一年，是疫情结束的一年，研究生入学的一年。今年我读了很多本书，和她去了很多地方，我觉得这就是我这一年最宝贵的，最有价值的东西。 书籍就微信读书上，我就读了8本书《球状闪电》、《蛙》、《可能性的艺术》、《浅薄》、《浪潮之巅》、《置身事内》、《今日简史》等等，还有一些轻小说就不必翻出来讲了。其中大部分都是和社会相关的，批判现实的不公、贫富差距过大，还有讲述历史的优秀书籍。  旅游今年去了赣州、广州、舟山、宁波、青岛、长沙、桂林、阳朔、柳州，很可惜我不是一个喜欢拍照的人，没有保留几张好看的照片，就用文字浅浅地记录一下今年地旅行。 为什么要去广州呢？因为她在，不在乎什么地点，其实只要有她就行，虽然去了很多次广州，但是丝毫没有厌倦这个城市，现在我还是怀念广州的美食：隆江猪脚饭、猪杂汤粉、牛肉稞条等等。最想的事情就是和她去吃海底捞，不知为什么，就是觉得在海底捞会很放松。广州的风土人情总让人很惬意。 舟山，在舟山我的印象估计只有那次早早起床去海边看的日出了吧，很震惊呀，感觉生活就是为此而存在的。日出和大海，总给人一种希望，一天刚刚开始，一切皆有可能。 宁波，我对宁波的印...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/nanami.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Lisang</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LosLisang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/LosLisang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxtoact@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAgit%E4%BB%93%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">创建一个git仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-config"><span class="toc-number">2.</span> <span class="toc-text">git config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9F%90%E4%BA%9B%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">修改某些属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B1%9E%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">查看属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-clone"><span class="toc-number">3.</span> <span class="toc-text">git clone</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%BA%E5%B8%A6%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.</span> <span class="toc-text">携带参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E5%92%8C%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%BB%91%E5%AE%9A-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="toc-number">4.</span> <span class="toc-text">本地仓库和远程仓库绑定(远程分支)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/C-%E9%83%A8%E7%BD%B2%E5%B0%8F%E5%BA%94%E7%94%A8/pikpak-with-webdav/" title="WebDAV 入门指南：把云盘挂载成本地硬盘"><img src="/img/default_cover/photo_2025-12-06_19-08-15.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="WebDAV 入门指南：把云盘挂载成本地硬盘"/></a><div class="content"><a class="title" href="/2025/12/06/C-%E9%83%A8%E7%BD%B2%E5%B0%8F%E5%BA%94%E7%94%A8/pikpak-with-webdav/" title="WebDAV 入门指南：把云盘挂载成本地硬盘">WebDAV 入门指南：把云盘挂载成本地硬盘</a><time datetime="2025-12-06T13:00:05.000Z" title="Created 2025-12-06 13:00:05">2025-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part3-%E8%A1%A8-%E6%9D%A5%E8%87%AA%E6%B7%B1%E6%B8%8A%E7%9A%84%E8%99%9A%E7%A9%BA/" title="恶役千金的矜持-Part3-表-来自深渊的虚空"><img src="/img/default_cover/photo_2025-12-06_19-08-21.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-Part3-表-来自深渊的虚空"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part3-%E8%A1%A8-%E6%9D%A5%E8%87%AA%E6%B7%B1%E6%B8%8A%E7%9A%84%E8%99%9A%E7%A9%BA/" title="恶役千金的矜持-Part3-表-来自深渊的虚空">恶役千金的矜持-Part3-表-来自深渊的虚空</a><time datetime="2025-03-17T17:11:32.000Z" title="Created 2025-03-17 17:11:32">2025-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/%E9%A2%9D%E5%A4%96/" title="恶役千金的矜持-额外"><img src="/img/default_cover/photo_2025-12-06_19-09-52.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-额外"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/%E9%A2%9D%E5%A4%96/" title="恶役千金的矜持-额外">恶役千金的矜持-额外</a><time datetime="2025-03-17T17:11:28.000Z" title="Created 2025-03-17 17:11:28">2025-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E9%87%8C-%E6%9D%A5%E8%87%AA%E9%82%AA%E6%81%B6%E4%B9%8B%E8%8A%B1%E7%9A%84%E5%B8%8C%E6%9C%9B/" title="恶役千金的矜持-Part2-里-来自邪恶之花的希望"><img src="/img/default_cover/photo_2025-12-06_19-10-05.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-Part2-里-来自邪恶之花的希望"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E9%87%8C-%E6%9D%A5%E8%87%AA%E9%82%AA%E6%81%B6%E4%B9%8B%E8%8A%B1%E7%9A%84%E5%B8%8C%E6%9C%9B/" title="恶役千金的矜持-Part2-里-来自邪恶之花的希望">恶役千金的矜持-Part2-里-来自邪恶之花的希望</a><time datetime="2025-03-17T17:11:10.000Z" title="Created 2025-03-17 17:11:10">2025-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E8%A1%A8-%E8%87%B4%E4%BD%A0%E5%8D%B3%E5%B0%86%E5%88%B0%E6%9D%A5%E7%9A%84%E7%BB%9D%E6%9C%9B/" title="恶役千金的矜持-Part2-表-致你即将到来的绝望"><img src="/img/default_cover/photo_2025-12-06_19-08-31.jpg" onerror="this.onerror=null;this.src='/img/error.png'" alt="恶役千金的矜持-Part2-表-致你即将到来的绝望"/></a><div class="content"><a class="title" href="/2025/03/17/B-%E7%94%9F%E6%B4%BB/%E6%81%B6%E5%BD%B9%E5%8D%83%E9%87%91%E7%9A%84%E7%9F%9C%E6%8C%81/Part2-%E8%A1%A8-%E8%87%B4%E4%BD%A0%E5%8D%B3%E5%B0%86%E5%88%B0%E6%9D%A5%E7%9A%84%E7%BB%9D%E6%9C%9B/" title="恶役千金的矜持-Part2-表-致你即将到来的绝望">恶役千金的矜持-Part2-表-致你即将到来的绝望</a><time datetime="2025-03-17T17:10:55.000Z" title="Created 2025-03-17 17:10:55">2025-03-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Lisang</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3-b2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3-b2"></script><script src="/js/main.js?v=5.5.3-b2"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.4/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="你点我干嘛,今天写博客了吗,又摸鱼了哦,不许划水,再点就下班,BUG 都修完了吗,我超忙的,这其实是个彩蛋,别点了会秃头,先喝口水再写,已经很晚啦,代码别乱改,记得提交Git,TODO 写在心里了,这下真的最后一行了" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
