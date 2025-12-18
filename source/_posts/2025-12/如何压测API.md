@@ -34,7 +34,7 @@ toc:
 
 最简单的压测命令：
 
-```
+```sh
 wrk -t12 -c400 -d30s http://localhost:8080/api/v1/user
 ```
 
@@ -62,7 +62,7 @@ wrk.headers["Content-Type"] = "application/json"
 
 比如你想压测 `/user/1001` 到 `/user/9999` 这样随机的用户详情页，防止服务器缓存热点。
 
-```
+```lua
 -- 在压测开始前初始化随机种子
 -- 注意：每个线程都有独立的 Lua 虚拟机，所以每个线程都需要初始化一次
 math.randomseed(os.time())
@@ -83,7 +83,7 @@ end
 
 真实场景通常是混合的：80% 读请求，20% 写请求。
 
-```
+```lua
 math.randomseed(os.time())
 
 local paths = {
@@ -115,7 +115,7 @@ end
 
 压测“创建订单”或“短链接生成”接口时，每次 Body 必须不同，否则会被数据库唯一索引拦住。
 
-```
+```lua
 math.randomseed(os.time())
 
 -- 辅助函数：生成随机字符串
@@ -146,7 +146,7 @@ end
 
 如果你要压测需要登录的接口，可以给每个线程分配不同的 Token。
 
-```
+```lua
 -- 每个线程启动时调用一次 setup
 -- thread: 代表当前线程对象
 function setup(thread)
