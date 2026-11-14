@@ -1,6 +1,6 @@
 ---
 title: 7月中小记
-date: 2024-07-18T23:15:43+08:00
+date: 2024-07-18 23:15:43
 updated:
 tags: [随笔]
 categories: [生活]

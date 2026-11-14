@@ -1,6 +1,6 @@
 ---
 title: 对磁力链接的思考
-date: 2024-07-14T02:20:50+08:00
+date: 2024-07-14 02:20:50
 updated:
 tags: [磁力链接, P2P]
 categories: [技术]

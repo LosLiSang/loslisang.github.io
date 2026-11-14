@@ -18,10 +18,11 @@ nav:
   fixed: false
 
 menu:
-  # Home: / || fas fa-home
-  # List||fas fa-list:
-  #   Music: /music/ || fas fa-music
-  #   Movie: /movies/ || fas fa-video
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  分类: /categories/ || fas fa-folder-open
+  标签: /tags/ || fas fa-tags
+  订阅: /atom.xml || fas fa-rss
 
 # --------------------------------------
 # Code Blocks Settings
@@ -63,7 +64,7 @@ avatar:
 disable_top_img: false
 
 # If the banner of page not setting, it will show the default_top_img
-default_top_img: /img/top.jpg
+default_top_img: /img/top.webp
 
 # The banner image of index page
 index_img:
@@ -88,12 +89,12 @@ category_img:
 category_per_img:
 
 # The background image of footer
-footer_img: /img/footer.png
+footer_img: /img/footer.webp
 
 # Website Background
 # Can set it to color, image URL or an array containing colors and/or image URLs
 # If an array is provided, a random background will be selected from the array on each load
-background: /img/bg.png
+background: /img/bg.webp
 
 cover:
   # Disable the cover or not
@@ -102,42 +103,42 @@ cover:
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover:
-    - /img/default_cover/photo_2025-11-26_14-45-37.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-03.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-15.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-21.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-24.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-31.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-34.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-40.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-44.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-47.jpg
-    - /img/default_cover/photo_2025-12-06_19-08-52.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-04.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-19.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-28.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-32.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-37.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-40.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-44.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-52.jpg
-    - /img/default_cover/photo_2025-12-06_19-09-55.jpg
-    - /img/default_cover/photo_2025-12-06_19-10-05.jpg
-    - /img/default_cover/photo_2025-12-06_19-10-08.jpg
-    - /img/default_cover/photo_2025-12-06_19-10-14.jpg
-    - /img/default_cover/photo_2025-12-06_19-10-18.jpg
-    - /img/default_cover/水の骑士.jpg
+    - /img/default_cover/photo_2025-11-26_14-45-37.webp
+    - /img/default_cover/photo_2025-12-06_19-08-03.webp
+    - /img/default_cover/photo_2025-12-06_19-08-15.webp
+    - /img/default_cover/photo_2025-12-06_19-08-21.webp
+    - /img/default_cover/photo_2025-12-06_19-08-24.webp
+    - /img/default_cover/photo_2025-12-06_19-08-31.webp
+    - /img/default_cover/photo_2025-12-06_19-08-34.webp
+    - /img/default_cover/photo_2025-12-06_19-08-40.webp
+    - /img/default_cover/photo_2025-12-06_19-08-44.webp
+    - /img/default_cover/photo_2025-12-06_19-08-47.webp
+    - /img/default_cover/photo_2025-12-06_19-08-52.webp
+    - /img/default_cover/photo_2025-12-06_19-09-04.webp
+    - /img/default_cover/photo_2025-12-06_19-09-19.webp
+    - /img/default_cover/photo_2025-12-06_19-09-28.webp
+    - /img/default_cover/photo_2025-12-06_19-09-32.webp
+    - /img/default_cover/photo_2025-12-06_19-09-37.webp
+    - /img/default_cover/photo_2025-12-06_19-09-40.webp
+    - /img/default_cover/photo_2025-12-06_19-09-44.webp
+    - /img/default_cover/photo_2025-12-06_19-09-52.webp
+    - /img/default_cover/photo_2025-12-06_19-09-55.webp
+    - /img/default_cover/photo_2025-12-06_19-10-05.webp
+    - /img/default_cover/photo_2025-12-06_19-10-08.webp
+    - /img/default_cover/photo_2025-12-06_19-10-14.webp
+    - /img/default_cover/photo_2025-12-06_19-10-18.webp
+    - /img/default_cover/水の骑士.webp
 
 # Replace Broken Images
 error_img:
   flink: /img/friend_404.gif
-  post_page: /img/error.png
+  post_page: /img/error.webp
 
 # A simple 404 page
 error_404:
-  enable: false
+  enable: true
   subtitle: 'Page Not Found'
-  background: /img/404.png
+  background: /img/404.webp
 
 post_meta:
   # Home Page
@@ -508,8 +509,8 @@ busuanzi:
 math:
   # Choose: mathjax, katex
   # Leave it empty if you don't need math
-  use:
-  per_page: true
+  use: mathjax
+  per_page: false
   hide_scrollbar: false
 
   mathjax:
@@ -529,7 +530,7 @@ math:
 search:
   # Choose: algolia_search / local_search / docsearch
   # leave it empty if you don't need search
-  use:
+  use: local_search
   placeholder:
 
   # Algolia Search
@@ -1076,9 +1077,9 @@ instantpage: false
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: false
+  enable: true
   # Use browser's native lazyload instead of vanilla-lazyload
-  native: false
+  native: true
   # Specify the field to use lazyload (site or post)
   field: site
   placeholder:

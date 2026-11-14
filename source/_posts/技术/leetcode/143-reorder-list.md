@@ -1,6 +1,6 @@
 ---
 title: LeetCode 143. 重排链表
-date: 2024-01-15T19:32:06+08:00
+date: 2024-01-15 19:32:06
 updated:
 tags: [LeetCode, 链表, 双指针]
 categories: [技术, LeetCode]
@@ -10,6 +10,7 @@ top_img:
 comments:
 cover:
 toc:
+mathjax: true
 ---
 ## 题目描述
 

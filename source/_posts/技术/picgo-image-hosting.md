@@ -1,6 +1,6 @@
 ---
 title: "使用Picgo配置Github图床上传图片"
-date: 2024-07-13T17:27:31+08:00
+date: 2024-07-13 17:27:31
 updated:
 tags: [图床, PicGo, GitHub]
 categories: [技术]

@@ -1,6 +1,6 @@
 ---
 title: LeetCode 82. 删除排序链表中的重复元素 II
-date: 2024-01-15T19:40:04+08:00
+date: 2024-01-15 19:40:04
 updated:
 tags: [LeetCode, 链表, 双指针]
 categories: [技术, LeetCode]

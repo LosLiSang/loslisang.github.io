@@ -1,6 +1,6 @@
 ---
 title: 5美元开通 Google AI One Pro
-date: 2026-11-03T23:59:00+08:00
+date: 2026-11-03 23:59:00
 tags: [Google, 订阅, 学生认证]
 categories: [技术]
 keywords: [Google, AI One Pro, 订阅, 学生认证]

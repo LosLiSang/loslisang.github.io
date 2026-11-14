@@ -1,6 +1,6 @@
 ---
 title: 如何压测 API 接口？—— 使用 wrk 工具进行高性能压测
-date: 2025-12-09T00:06:05+08:00
+date: 2025-12-09 00:06:05
 updated:
 tags: [API, 压测, wrk]
 categories: [技术]

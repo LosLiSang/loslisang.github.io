@@ -9,11 +9,11 @@
 # Site
 title: Lisang's Blog
 subtitle: ''
-description: ''
-keywords:
+description: '从感性到因果，从因果到辩证，从辩证到系统'
+keywords: [技术, 编程, 算法, 思考, 生活]
 author: Lisang
 language: zh-cn
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -106,3 +106,20 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# Local Search (hexo-generator-searchdb)
+search:
+  path: search.xml
+  field: post
+  content: true
+
+# RSS Feed (hexo-generator-feed)
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20
+
+# Sitemap (hexo-generator-sitemap)
+sitemap:
+  path: sitemap.xml

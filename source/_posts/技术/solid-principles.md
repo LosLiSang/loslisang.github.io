@@ -1,6 +1,6 @@
 ---
 title: 软件开发SOLID
-date: 2026-11-02T00:48:35+08:00
+date: 2026-11-02 00:48:35
 tags: [SOLID, 软件工程]
 categories: [技术]
 keywords: [SOLID, 软件工程, 设计原则]
@@ -141,9 +141,3 @@ DIP 依赖倒置原则 (Dependency Inversion Principle) 指的是高层模块不
 ISP 接口隔离原则 (Interface Segregation Principle) 指的是客户端不应该依赖于它不需要的接口。
 
 > 处理这种文件的最简单方法就是拆分大接口成为一个个的小接口
-
-## 一些常见的误区
-
-
-
-## 一些常见的实践

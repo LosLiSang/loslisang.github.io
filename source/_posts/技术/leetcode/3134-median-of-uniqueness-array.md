@@ -1,6 +1,6 @@
 ---
 title: Leetcode 3134.找出唯一性数组的中位数
-date: 2024-08-27T14:20:31+08:00
+date: 2024-08-27 14:20:31
 updated:
 tags: [LeetCode, 滑动窗口, 二分]
 categories: [技术, LeetCode]
@@ -10,6 +10,7 @@ top_img:
 comments:
 cover:
 toc:
+mathjax: true
 ---
 
 > * 给你一个整数数组 nums 。数组 nums 的 唯一性数组 是一个按元素从小到大排序的数组，包含了 nums 的所有非空子数组中不同元素的个数。

@@ -1,6 +1,6 @@
 ---
 title: Docker中CMD和Entrypoint的区别
-date: 2025-12-18T16:19:05+08:00
+date: 2025-12-18 16:19:05
 updated:
 tags: [Docker, Dockerfile, 容器化]
 categories: [技术]

@@ -1,6 +1,6 @@
 ---
 title: Leetcode 3144. 分割字符频率相等的最少子字符串
-date: 2024-08-28T16:00:30+08:00
+date: 2024-08-28 16:00:30
 updated:
 tags: [LeetCode, 动态规划, 前缀和]
 categories: [技术, LeetCode]
