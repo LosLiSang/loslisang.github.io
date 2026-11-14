@@ -22,6 +22,7 @@ menu:
   归档: /archives/ || fas fa-archive
   分类: /categories/ || fas fa-folder-open
   标签: /tags/ || fas fa-tags
+  创作: /novels/ || fas fa-book-open
   订阅: /atom.xml || fas fa-rss
 
 # --------------------------------------
@@ -1125,6 +1126,7 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/fonts.css">
+    - <link rel="stylesheet" href="/css/custom.css">
   bottom:
     # - <script src="xxxx"></script>
 

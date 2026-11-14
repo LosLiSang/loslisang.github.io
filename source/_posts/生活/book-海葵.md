@@ -1,9 +1,9 @@
 ---
-title: 海葵
+title: 《海葵》读书笔记
 date: 2024-07-29 10:20:54
 updated:
 tags: [读书笔记]
-categories: [生活]
+categories: [生活, 读书]
 keywords: []
 description:
 top_img:

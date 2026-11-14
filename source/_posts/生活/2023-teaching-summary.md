@@ -1,9 +1,9 @@
 ---
-title: 23年信息奥数教学总结
+title: 2023 年信息奥数教学总结
 date: 2024-01-14 18:38:40
 updated:
 tags: [总结, 教学]
-categories: [生活]
+categories: [生活, 总结]
 keywords: []
 description: 23年信息奥数教学总结
 top_img:

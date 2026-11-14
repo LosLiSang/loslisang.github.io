@@ -1,5 +1,5 @@
 ---
-title: Leetcode 3134.找出唯一性数组的中位数
+title: LeetCode 3134. 找出唯一性数组的中位数
 date: 2024-08-27 14:20:31
 updated:
 tags: [LeetCode, 滑动窗口, 二分]

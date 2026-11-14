@@ -3,7 +3,7 @@ title: 7月中小记
 date: 2024-07-18 23:15:43
 updated:
 tags: [随笔]
-categories: [生活]
+categories: [生活, 随笔]
 keywords: []
 description:
 top_img: https://raw.githubusercontent.com/LosLiSang/picgo/main/水の骑士.jpg

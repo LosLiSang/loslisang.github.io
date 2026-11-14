@@ -1,5 +1,5 @@
 ---
-title: "使用Picgo配置Github图床上传图片"
+title: 使用 PicGo 配置 GitHub 图床上传图片
 date: 2024-07-13 17:27:31
 updated:
 tags: [图床, PicGo, GitHub]

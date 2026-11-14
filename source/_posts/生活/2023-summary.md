@@ -3,7 +3,7 @@ title: 2023 Summary
 date: 2024-01-12 00:00:00
 updated:
 tags: [总结, 年度总结]
-categories: [生活]
+categories: [生活, 总结]
 keywords: []
 description: Summary Myself
 top_img: https://raw.githubusercontent.com/LosLiSang/picgo/main/cover.jpg?token=AMSNNO45S6QX7MCZGVZPMXTGSAAUE

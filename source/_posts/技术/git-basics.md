@@ -1,5 +1,5 @@
 ---
-title: git分布式管理工具使用
+title: Git 分布式管理工具使用
 date: 2024-01-11 00:00:00
 updated:
 tags: [Git]

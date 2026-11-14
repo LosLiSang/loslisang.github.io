@@ -1,5 +1,5 @@
 ---
-title: 软件开发SOLID
+title: 软件开发 SOLID 原则
 date: 2026-11-02 00:48:35
 tags: [SOLID, 软件工程]
 categories: [技术]
