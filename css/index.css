@@ -1741,7 +1741,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: SimSun;
+  font-family: 'Bright Serif Code', 'Noto Serif SC', 'SimSun', 'STSong', serif;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   scroll-behavior: smooth;
@@ -1870,7 +1870,7 @@ a:hover {
 .site-name,
 #aside-content .author-info-name,
 #aside-content .author-info-description {
-  font-family: Monaco;
+  font-family: 'Bright Serif Code', 'Monaco', serif;
 }
 .text-center {
   text-align: center;
@@ -2044,7 +2044,7 @@ figure.highlight pre .javascript .function {
 .container pre,
 .container code {
   font-size: 16px;
-  font-family: Monaspace Neon !important;
+  font-family: 'Bright Serif Code', 'Consolas', 'Monaco', monospace !important;
   border-radius: 6px;
 }
 .container code {
