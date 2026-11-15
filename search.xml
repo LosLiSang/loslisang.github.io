@@ -1,6 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker 中 CMD 和 Entrypoint 的区别</title>
+    <url>/2025/12/18/%E6%8A%80%E6%9C%AF/docker-cmd-vs-entrypoint/</url>
+    <content><![CDATA[Docker 中的 CMD 和 ENTRYPOINT 经常让人迷糊，尤其是同时使用时，更容易出现“命令不按预期执行”“容器秒退”等问题。理解它们的本质差异，是写好 Dockerfile 的关键。
+核心理解：谁是“主角”，谁是“默认参数”在 Docker 里，可以简单地这样理解：
+
+ENTRYPOINT：定义“这个镜像本质上是干什么的”，也就是固定的主命令 &#x2F; 主进程。
+CMD：为这个镜像提供默认参数，或者在没有 ENTRYPOINT 时，提供默认要执行的命令。
+
+当二者同时存在时：
+
+Docker 实际运行的是：ENTRYPOINT + CMD
+且 CMD 会被当成是 ENTRYPOINT 的参数，而不是两个独立执行的命令。
+
+所以：
+ENTRYPOINT [&quot;top&quot;]CMD [&quot;curl&quot;, &quot;--help&quot;]
+
+真实执行的是：
+top curl --help
+
+而不是先执行 top 再执行 curl --help，这也是许多初学者踩坑的地方。
+
+三种经典写法与执行效果Docker 支持两种语法风格：shell 形式 和 exec 形式。这里重点看更推荐、更直观的 exec 形式（JSON 数组写法）。
+1. 只有 CMDFROM alpine:latestRUN apk --no-cache add curlCMD [&quot;curl&quot;, &quot;--help&quot;]
+
+执行：
+docker run --rm my-image
+
+实际命令是：
+curl --help
+
+如果你在 docker run 时追加了命令：
+docker run --rm my-image curl https://example.com
+
+则会完全覆盖 CMD，真实运行的是：
+curl https://example.com
+
+要点：
+
+没有 ENTRYPOINT 时，CMD 是“默认要执行的命令”，可被运行时参数轻松覆盖。
+
+
+2. 只有 ENTRYPOINTFROM alpine:latestRUN apk --no-cache add curlENTRYPOINT [&quot;curl&quot;]
+
+执行：
+docker run --rm my-image --help
+
+真实运行的是：
+curl --help
+
+再看一个例子：
+docker run --rm my-image https://example.com
+
+真实运行的是：
+curl https://example.com
+
+要点：
+
+ENTRYPOINT 定死了“主角”是 curl，无论你在 docker run 后面写什么，都是给 curl 当参数。
+这种写法适合“就是要把这个镜像当作某个命令的专用工具”的场景，例如 CLI 工具封装。
+
+
+3. ENTRYPOINT + CMD 组合这是最容易踩坑但也最强大的用法。
+FROM alpine:latestRUN apk --no-cache add curlENTRYPOINT [&quot;curl&quot;]CMD [&quot;--help&quot;]
+
+不加任何额外参数时：
+docker run --rm my-image
+
+真实运行：
+curl --help
+
+如果在运行时追加参数：
+docker run --rm my-image https://example.com
+
+真实运行：
+curl https://example.com
+
+要点：
+
+CMD 给 ENTRYPOINT 提供默认参数，在不传参时生效。
+一旦运行时传入参数，就会覆盖 CMD，但不会覆盖 ENTRYPOINT。
+
+
+真实踩坑案例：为什么这段 Dockerfile 跑不起来？看下面这个例子（与前面提到的情况一致）：
+FROM alpine:latestRUN apk --no-cache add curl bashENTRYPOINT [ &quot;top&quot; ]CMD [&quot;curl&quot;, &quot;--help&quot;]
+
+表面期望：
+
+ENTRYPOINT 跑 top，保持容器持续运行。
+CMD 跑 curl --help，在启动时打印帮助。
+
+实际发生的事：
+
+Docker 试图执行的命令是：top curl --help
+curl 和 --help 被作为参数传给了 top。
+top 不认识 curl 这样的参数，于是报错退出，容器直接结束。
+
+也就是说：
+
+你原本以为是“先跑 top，再跑 curl –help”；
+实际上是“用 top 去执行 curl –help 这种不合法的参数组合”。
+
+根本原因：CMD 永远不会作为一个“第二条命令”被执行，它只是给 ENTRYPOINT（或默认 shell）提供参数。
+
+想顺序执行多个命令应该怎么写？如果希望：
+
+容器启动时执行一次 curl --help；
+然后再启动一个“持续运行”的程序（例如 top），让容器不退出；
+
+有两种常见写法。
+方案 A：用脚本做真正的入口（推荐）entrypoint.sh：
+#!/bin/bashset -e# 1. 执行一次性命令curl --help# 2. 启动一个长期运行的前台进程top
+
+Dockerfile：
+FROM alpine:latestRUN apk --no-cache add curl bashCOPY entrypoint.sh /entrypoint.shRUN chmod +x /entrypoint.shENTRYPOINT [&quot;/bin/bash&quot;, &quot;/entrypoint.sh&quot;]
+
+特点：
+
+脚本的最后一个前台进程（这里是 top）会成为容器的 PID 1。
+可以在脚本里写完整的业务逻辑、异常处理、日志输出等。
+
+
+方案 B：使用 sh -c 串联命令（方便测试）如果只是做本地实验，图省事，可以直接在 CMD 里写一行 shell：
+FROM alpine:latestRUN apk --no-cache add curl bashCMD [&quot;sh&quot;, &quot;-c&quot;, &quot;curl --help &amp;&amp; top&quot;]
+
+这里没有 ENTRYPOINT，容器启动时会执行：
+sh -c &quot;curl --help &amp;&amp; top&quot;
+
+执行顺序：
+
+先执行 curl --help，退出码为 0。
+再执行 top，top 在前台运行，容器保持存活。
+
+缺点：
+
+复杂逻辑都堆在一行 shell 字符串里，可读性差。
+不利于后期维护，生产环境更推荐脚本方式。
+
+
+常见使用场景与选择建议1. 应用服务镜像（Web&#x2F;后端服务）典型 Dockerfile：
+FROM python:3.12-slimWORKDIR /appCOPY . /appRUN pip install -r requirements.txtCMD [&quot;gunicorn&quot;, &quot;-c&quot;, &quot;gunicorn.conf.py&quot;, &quot;app:app&quot;]
+
+建议：
+
+大多数 Web 服务只用 CMD 就够了。
+如非必要，不要使用 ENTRYPOINT，保持灵活（方便在调试时覆盖为 /bin/bash）。
+
+
+2. CLI &#x2F; 工具型镜像典型 Dockerfile：
+FROM alpine:latestRUN apk --no-cache add curlENTRYPOINT [&quot;curl&quot;]CMD [&quot;--help&quot;]
+
+特征：
+
+这个镜像“就是一个 curl 工具箱”。
+直接 docker run 相当于执行 curl --help。
+传参时可以很自然：
+
+docker run --rm my-curl https://example.com
+
+
+3. 多进程 &#x2F; 复杂启动逻辑典型需求：
+
+启动前做一些准备工作；
+启动一个或多个长期服务；
+监听信号，优雅退出。
+
+推荐：
+
+用脚本做 ENTRYPOINT，在里面管理所有流程。
+或使用进程管理器（如 tini、supervisord），但这已经超出“简单 Dockerfile”的范畴。
+
+
+总结：如何简单记住它们？可以用一句话概括：
+
+ENTRYPOINT 决定“这个镜像是谁”，CMD 决定“它默认怎么干活”。
+
+
+只需要一个默认命令：用 CMD。
+需要一个固定不变的主命令：用 ENTRYPOINT。
+既要固定主命令，又要可配置默认参数：同时用 ENTRYPOINT + CMD，记住 CMD 是参数，不是另一条命令。
+需要顺序执行多条命令：用脚本或 sh -c，不要指望多个 CMD&#x2F;ENTRYPOINT 帮你“自动依次执行”。
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Dockerfile</tag>
+        <tag>容器化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git 分布式管理工具使用</title>
     <url>/2024/01/11/%E6%8A%80%E6%9C%AF/git-basics/</url>
     <content><![CDATA[创建一个git仓库git init
@@ -49,35 +241,6 @@ git remote add origin &quot;https://github.com/LosLiSang/loslisang.github.io.git
       </tags>
   </entry>
   <entry>
-    <title>使用 PicGo 配置 GitHub 图床上传图片</title>
-    <url>/2024/07/13/%E6%8A%80%E6%9C%AF/picgo-image-hosting/</url>
-    <content><![CDATA[
-需求和问题写博客的时候总是要想到图片的问题，之前我的图片展示是放在Obsidian的目录下，也就是和md文件放在一起，这样的好处是方便管理，但是缺点也很明显，就是图片的链接是本地的，如果要发布到博客上，就需要手动修改图片的链接，这样就很麻烦。所以我决定将图片放到图床上，这样就可以直接引用图片链接了。
-其实我根本就懒得调整图片的链接
-例如这张图片: 
-解决办法其一: 使用Picgo作为图床软件, Picgo的原理是将图片上传到图床，然后将图片链接复制到剪贴板，这样就可以直接粘贴到md文件中了。
-在使用Picgo之前需要配置好图床，这里我选择了Github作为图床，因为Github 免费 绝对不是我想白嫖
-配置Github图床的步骤
-创建Github Repository(注意仓库 可见性 必须是 public 否则会因为token过期而访问不到图片)
-创建Personal Access Token Fine-grained Personal Access Tokens (github.com)
-配置Picgo
-
-使用vscode作为md编辑器如果使用vscode作为md编辑器, 则可以使用插件 Markdown All in One 来预览图片, 还有插件 vs-picgo来上传图片特别方便, 只要选择之前的配置就可以上传图片了。
-vs-picgo配置基础配置就不多说了, 主要是快捷键 Ctrl + Alt + U 上传图片, 然后会自动复制图片链接到剪贴板, 这样就可以直接粘贴到md文件中了。
-但是我不喜欢这样写, 我还是想用Ctrl + V的方式来粘贴图片, 无奈Ctrl + V的快捷键会有冲突, 因为文本复制的快捷键也是是Ctrl + V, 经常会出现粘贴不了的情况, 所以我选择了将vs-picgo的快捷键改为Ctrl + K  Ctrl + V, 这样就不会和文本复制的快捷键冲突了。
-之后希望用一种方法实现它的自动粘贴功能, 很简单的逻辑:
-当检测到粘贴板是图片时, 才使用Picgo的上传功能, 否则使用默认的文本粘贴功能。
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>图床</tag>
-        <tag>PicGo</tag>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>5 美元开通 Google AI One Pro</title>
     <url>/2026/11/03/%E6%8A%80%E6%9C%AF/google-ai-one-pro-5usd/</url>
     <content><![CDATA[主要原理通过谷歌的学生认证, 实现部分地区的低价Pro订阅
@@ -112,6 +275,35 @@ https://policies.google.com/country-association-form
         <tag>Google</tag>
         <tag>订阅</tag>
         <tag>学生认证</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 PicGo 配置 GitHub 图床上传图片</title>
+    <url>/2024/07/13/%E6%8A%80%E6%9C%AF/picgo-image-hosting/</url>
+    <content><![CDATA[
+需求和问题写博客的时候总是要想到图片的问题，之前我的图片展示是放在Obsidian的目录下，也就是和md文件放在一起，这样的好处是方便管理，但是缺点也很明显，就是图片的链接是本地的，如果要发布到博客上，就需要手动修改图片的链接，这样就很麻烦。所以我决定将图片放到图床上，这样就可以直接引用图片链接了。
+其实我根本就懒得调整图片的链接
+例如这张图片: 
+解决办法其一: 使用Picgo作为图床软件, Picgo的原理是将图片上传到图床，然后将图片链接复制到剪贴板，这样就可以直接粘贴到md文件中了。
+在使用Picgo之前需要配置好图床，这里我选择了Github作为图床，因为Github 免费 绝对不是我想白嫖
+配置Github图床的步骤
+创建Github Repository(注意仓库 可见性 必须是 public 否则会因为token过期而访问不到图片)
+创建Personal Access Token Fine-grained Personal Access Tokens (github.com)
+配置Picgo
+
+使用vscode作为md编辑器如果使用vscode作为md编辑器, 则可以使用插件 Markdown All in One 来预览图片, 还有插件 vs-picgo来上传图片特别方便, 只要选择之前的配置就可以上传图片了。
+vs-picgo配置基础配置就不多说了, 主要是快捷键 Ctrl + Alt + U 上传图片, 然后会自动复制图片链接到剪贴板, 这样就可以直接粘贴到md文件中了。
+但是我不喜欢这样写, 我还是想用Ctrl + V的方式来粘贴图片, 无奈Ctrl + V的快捷键会有冲突, 因为文本复制的快捷键也是是Ctrl + V, 经常会出现粘贴不了的情况, 所以我选择了将vs-picgo的快捷键改为Ctrl + K  Ctrl + V, 这样就不会和文本复制的快捷键冲突了。
+之后希望用一种方法实现它的自动粘贴功能, 很简单的逻辑:
+当检测到粘贴板是图片时, 才使用Picgo的上传功能, 否则使用默认的文本粘贴功能。
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>图床</tag>
+        <tag>PicGo</tag>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -169,72 +361,6 @@ DIP 说的是源码依赖指向哪里（静态结构），IoC 说的是谁调用
       <tags>
         <tag>SOLID</tag>
         <tag>软件工程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何压测 API 接口？—— 使用 wrk 工具进行高性能压测</title>
-    <url>/2025/12/09/%E6%8A%80%E6%9C%AF/wrk-api-benchmark/</url>
-    <content><![CDATA[Performance Testing with Apache Bench | by Pankaj Gupta | Medium
-Top 9 Methods for API Testing in Java | Comprehensive Guide
-ab - Apache HTTP server benchmarking tool - Apache HTTP Server Version 2.4
-性能测试工具 wrk 使用教程 - 犬小哈 - 博客园
-wrk 是一款现代、轻量级且极高性能的 HTTP 基准测试工具（Benchmark Tool）。它最显著的特点是利用了异步事件驱动架构（如 Linux 的 epoll 或 macOS 的 kqueue），能用极少的线程在单机上产生巨大的并发压力。
-简单来说，它是后端开发者用来压测接口 QPS (每秒查询率) 和 Latency (延迟) 的神器。
-为什么用 wrk 而不是 Apache Bench (ab) 或 JMeter？
-性能更强：wrk 使用非阻塞 I&#x2F;O，能比 ab 产生更高的并发，更能榨干服务器性能。
-支持 Lua 脚本：这是 wrk 的杀手锏。你可以编写 Lua 脚本来构造复杂的请求（如生成动态 Token、随机参数、POST 复杂 JSON 等），而 ab 只能发静态请求。
-轻量：没有 JMeter 那么重的 GUI，纯命令行，适合服务器端直接跑。
-
-常用命令示例最简单的压测命令：
-wrk -t12 -c400 -d30s http://localhost:8080/api/v1/user
-
-
--t12: 使用 12 个线程（一般设置为 CPU 核心数）。
--c400: 保持 400 个 HTTP 连接（并发数）。
--d30s: 持续压测 30 秒。
---latency: (可选) 输出详细的延迟分布报告（P50, P90, P99）。
-
-配合 Lua 脚本（进阶）比如你要压测一个POST 接口，且需要JSON Body，可以写一个 post.lua：
--- post.luawrk.method = &quot;POST&quot;wrk.body   = &#x27;&#123;&quot;billCheckId&quot;: 123, &quot;type&quot;: &quot;NC&quot;&#125;&#x27;wrk.headers[&quot;Content-Type&quot;] = &quot;application/json&quot;
-
-wrk 的强大之处就在于它嵌入了 LuaJIT 解释器。这意味着你可以完全控制 HTTP 请求的生成逻辑，包括随机化参数、动态生成 Body、随机 Header、甚至根据响应调整请求。
-以下是几个实用的 Lua 脚本模板，专门解决“随机分布请求”的问题。
-1. 基础随机：随机请求不同的 URL 路径比如你想压测 /user/1001 到 /user/9999 这样随机的用户详情页，防止服务器缓存热点。
--- 在压测开始前初始化随机种子-- 注意：每个线程都有独立的 Lua 虚拟机，所以每个线程都需要初始化一次math.randomseed(os.time())request = function()   -- 生成 1 到 10000 之间的随机用户ID   local user_id = math.random(1, 10000)   -- 拼接路径   local path = &quot;/user/&quot; .. user_id      -- 返回定制的请求   -- wrk.format(method, path, headers, body)   return wrk.format(&quot;GET&quot;, path)end
-
-2. 权重随机：按比例访问不同接口真实场景通常是混合的：80% 读请求，20% 写请求。
-math.randomseed(os.time())local paths = &#123;   &quot;/products/list&quot;,    -- 读列表   &quot;/products/detail&quot;,  -- 读详情   &quot;/cart/add&quot;          -- 写操作（加购）&#125;request = function()   local r = math.random(1, 100)      if r &lt;= 60 then      -- 60% 概率访问列表      return wrk.format(&quot;GET&quot;, paths[1])   elseif r &lt;= 90 then      -- 30% 概率访问详情 (60-90)      local pid = math.random(100, 500)      return wrk.format(&quot;GET&quot;, paths[2] .. &quot;/&quot; .. pid)   else      -- 10% 概率添加购物车 (90-100)      local body = &#x27;&#123;&quot;productId&quot;: &#x27; .. math.random(100, 500) .. &#x27;&#125;&#x27;      wrk.headers[&quot;Content-Type&quot;] = &quot;application/json&quot;      return wrk.format(&quot;POST&quot;, paths[3], nil, body)   endend
-
-3. POST 请求：随机 Body 内容压测“创建订单”或“短链接生成”接口时，每次 Body 必须不同，否则会被数据库唯一索引拦住。
-math.randomseed(os.time())-- 辅助函数：生成随机字符串function random_str(length)   local chars = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;   local res = &quot;&quot;   for i = 1, length do      local rand = math.random(#chars)      res = res .. string.sub(chars, rand, rand)   end   return resendrequest = function()   -- 动态生成 Body JSON   local random_url = &quot;http://example.com/&quot; .. random_str(8)   local body = &#x27;&#123;&quot;originalUrl&quot;: &quot;&#x27; .. random_url .. &#x27;&quot;&#125;&#x27;      -- 设置 Header   wrk.headers[&quot;Content-Type&quot;] = &quot;application/json&quot;      -- 发送 POST   return wrk.format(&quot;POST&quot;, &quot;/create&quot;, nil, body)end
-
-4. 高级技巧：每个线程独立的“用户身份” (Token)如果你要压测需要登录的接口，可以给每个线程分配不同的 Token。
--- 每个线程启动时调用一次 setup-- thread: 代表当前线程对象function setup(thread)   -- 给每个线程分配一个唯一的 ID (1, 2, 3...)   thread:set(&quot;id&quot;, _G.thread_id_counter)   _G.thread_id_counter = (_G.thread_id_counter or 0) + 1end-- 线程初始化时运行function init(args)   -- 根据线程 ID 生成伪造 Token   -- 比如线程1用 user1_token，线程2用 user2_token   local token = &quot;Bearer user_&quot; .. id .. &quot;_token_secret&quot;      -- 设置全局默认 Header，该线程后续所有请求都会带上这个   wrk.headers[&quot;Authorization&quot;] = tokenendrequest = function()   return wrk.format(&quot;GET&quot;, &quot;/profile&quot;)end
-
-总结
-随机 URL：在 request() 函数里拼装 path。
-随机 Body：在 request() 里拼装 JSON 字符串。
-按比例混合：用 math.random(1, 100) 做 if-else 分流。
-运行方式：一定要带上 --script 参数。
-
-如何查看CPU核心数lscpu
-
-可以看出一共有16个核心，每个核心可以当两个线程使用（Intel 的超线程技术）
-
-1. 为什么“1个核”能变“2个核”？
-
-物理层面：你的 CPU 确实只有 16 个完整的物理核心（Physical Cores），也就是有 16 套独立的 ALU（运算单元）和缓存。
-逻辑层面：但是，物理核心内部的执行资源（如寄存器、指令队列）往往有富余。SMT 技术允许操作系统把 1 个物理核心 识别为 2 个逻辑核心。
-
-
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>API</tag>
-        <tag>压测</tag>
-        <tag>wrk</tag>
       </tags>
   </entry>
   <entry>
@@ -358,6 +484,72 @@ WebDAV 挂载通常使用 FUSE（Filesystem in Userspace）。出于安全考虑
       </tags>
   </entry>
   <entry>
+    <title>如何压测 API 接口？—— 使用 wrk 工具进行高性能压测</title>
+    <url>/2025/12/09/%E6%8A%80%E6%9C%AF/wrk-api-benchmark/</url>
+    <content><![CDATA[Performance Testing with Apache Bench | by Pankaj Gupta | Medium
+Top 9 Methods for API Testing in Java | Comprehensive Guide
+ab - Apache HTTP server benchmarking tool - Apache HTTP Server Version 2.4
+性能测试工具 wrk 使用教程 - 犬小哈 - 博客园
+wrk 是一款现代、轻量级且极高性能的 HTTP 基准测试工具（Benchmark Tool）。它最显著的特点是利用了异步事件驱动架构（如 Linux 的 epoll 或 macOS 的 kqueue），能用极少的线程在单机上产生巨大的并发压力。
+简单来说，它是后端开发者用来压测接口 QPS (每秒查询率) 和 Latency (延迟) 的神器。
+为什么用 wrk 而不是 Apache Bench (ab) 或 JMeter？
+性能更强：wrk 使用非阻塞 I&#x2F;O，能比 ab 产生更高的并发，更能榨干服务器性能。
+支持 Lua 脚本：这是 wrk 的杀手锏。你可以编写 Lua 脚本来构造复杂的请求（如生成动态 Token、随机参数、POST 复杂 JSON 等），而 ab 只能发静态请求。
+轻量：没有 JMeter 那么重的 GUI，纯命令行，适合服务器端直接跑。
+
+常用命令示例最简单的压测命令：
+wrk -t12 -c400 -d30s http://localhost:8080/api/v1/user
+
+
+-t12: 使用 12 个线程（一般设置为 CPU 核心数）。
+-c400: 保持 400 个 HTTP 连接（并发数）。
+-d30s: 持续压测 30 秒。
+--latency: (可选) 输出详细的延迟分布报告（P50, P90, P99）。
+
+配合 Lua 脚本（进阶）比如你要压测一个POST 接口，且需要JSON Body，可以写一个 post.lua：
+-- post.luawrk.method = &quot;POST&quot;wrk.body   = &#x27;&#123;&quot;billCheckId&quot;: 123, &quot;type&quot;: &quot;NC&quot;&#125;&#x27;wrk.headers[&quot;Content-Type&quot;] = &quot;application/json&quot;
+
+wrk 的强大之处就在于它嵌入了 LuaJIT 解释器。这意味着你可以完全控制 HTTP 请求的生成逻辑，包括随机化参数、动态生成 Body、随机 Header、甚至根据响应调整请求。
+以下是几个实用的 Lua 脚本模板，专门解决“随机分布请求”的问题。
+1. 基础随机：随机请求不同的 URL 路径比如你想压测 /user/1001 到 /user/9999 这样随机的用户详情页，防止服务器缓存热点。
+-- 在压测开始前初始化随机种子-- 注意：每个线程都有独立的 Lua 虚拟机，所以每个线程都需要初始化一次math.randomseed(os.time())request = function()   -- 生成 1 到 10000 之间的随机用户ID   local user_id = math.random(1, 10000)   -- 拼接路径   local path = &quot;/user/&quot; .. user_id      -- 返回定制的请求   -- wrk.format(method, path, headers, body)   return wrk.format(&quot;GET&quot;, path)end
+
+2. 权重随机：按比例访问不同接口真实场景通常是混合的：80% 读请求，20% 写请求。
+math.randomseed(os.time())local paths = &#123;   &quot;/products/list&quot;,    -- 读列表   &quot;/products/detail&quot;,  -- 读详情   &quot;/cart/add&quot;          -- 写操作（加购）&#125;request = function()   local r = math.random(1, 100)      if r &lt;= 60 then      -- 60% 概率访问列表      return wrk.format(&quot;GET&quot;, paths[1])   elseif r &lt;= 90 then      -- 30% 概率访问详情 (60-90)      local pid = math.random(100, 500)      return wrk.format(&quot;GET&quot;, paths[2] .. &quot;/&quot; .. pid)   else      -- 10% 概率添加购物车 (90-100)      local body = &#x27;&#123;&quot;productId&quot;: &#x27; .. math.random(100, 500) .. &#x27;&#125;&#x27;      wrk.headers[&quot;Content-Type&quot;] = &quot;application/json&quot;      return wrk.format(&quot;POST&quot;, paths[3], nil, body)   endend
+
+3. POST 请求：随机 Body 内容压测“创建订单”或“短链接生成”接口时，每次 Body 必须不同，否则会被数据库唯一索引拦住。
+math.randomseed(os.time())-- 辅助函数：生成随机字符串function random_str(length)   local chars = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;   local res = &quot;&quot;   for i = 1, length do      local rand = math.random(#chars)      res = res .. string.sub(chars, rand, rand)   end   return resendrequest = function()   -- 动态生成 Body JSON   local random_url = &quot;http://example.com/&quot; .. random_str(8)   local body = &#x27;&#123;&quot;originalUrl&quot;: &quot;&#x27; .. random_url .. &#x27;&quot;&#125;&#x27;      -- 设置 Header   wrk.headers[&quot;Content-Type&quot;] = &quot;application/json&quot;      -- 发送 POST   return wrk.format(&quot;POST&quot;, &quot;/create&quot;, nil, body)end
+
+4. 高级技巧：每个线程独立的“用户身份” (Token)如果你要压测需要登录的接口，可以给每个线程分配不同的 Token。
+-- 每个线程启动时调用一次 setup-- thread: 代表当前线程对象function setup(thread)   -- 给每个线程分配一个唯一的 ID (1, 2, 3...)   thread:set(&quot;id&quot;, _G.thread_id_counter)   _G.thread_id_counter = (_G.thread_id_counter or 0) + 1end-- 线程初始化时运行function init(args)   -- 根据线程 ID 生成伪造 Token   -- 比如线程1用 user1_token，线程2用 user2_token   local token = &quot;Bearer user_&quot; .. id .. &quot;_token_secret&quot;      -- 设置全局默认 Header，该线程后续所有请求都会带上这个   wrk.headers[&quot;Authorization&quot;] = tokenendrequest = function()   return wrk.format(&quot;GET&quot;, &quot;/profile&quot;)end
+
+总结
+随机 URL：在 request() 函数里拼装 path。
+随机 Body：在 request() 里拼装 JSON 字符串。
+按比例混合：用 math.random(1, 100) 做 if-else 分流。
+运行方式：一定要带上 --script 参数。
+
+如何查看CPU核心数lscpu
+
+可以看出一共有16个核心，每个核心可以当两个线程使用（Intel 的超线程技术）
+
+1. 为什么“1个核”能变“2个核”？
+
+物理层面：你的 CPU 确实只有 16 个完整的物理核心（Physical Cores），也就是有 16 套独立的 ALU（运算单元）和缓存。
+逻辑层面：但是，物理核心内部的执行资源（如寄存器、指令队列）往往有富余。SMT 技术允许操作系统把 1 个物理核心 识别为 2 个逻辑核心。
+
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>API</tag>
+        <tag>压测</tag>
+        <tag>wrk</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2023 Summary</title>
     <url>/2024/01/12/%E7%94%9F%E6%B4%BB/2023-summary/</url>
     <content><![CDATA[总结23年是我本科毕业地一年，是疫情结束的一年，研究生入学的一年。今年我读了很多本书，和她去了很多地方，我觉得这就是我这一年最宝贵的，最有价值的东西。
@@ -410,45 +602,6 @@ WebDAV 挂载通常使用 FUSE（Filesystem in Userspace）。出于安全考虑
       <tags>
         <tag>总结</tag>
         <tag>教学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2024-07-31 思考</title>
-    <url>/2024/07/31/%E7%94%9F%E6%B4%BB/2024-07-31-thoughts/</url>
-    <content><![CDATA[晚上的一点小小的思考总结这里的总结不是说我想总结什么东西, 而是是我对”总结”这一行为的思考
-为什么会有这样的思考其一是因为晚上睡不着, 开始思考了, 思考过程中就觉得这几天基本上啥都没做, 从21号回家到现在已经10天了, 什么关键的事情都没有完成, 和我想要的目标差距太大了
-其二是对彼女回家进行考研复习的一点点思考, 看着她打算回家复习, 但是到现在也看着基本上没啥进展, 由此想到了自己这几天的进展, 我这几天也是基本上啥都没做, 想着我们两者是否有一些相同点.
-当你发现自己的钱花的太快了的时候你还会回头看一看自己的账单, 同样的类比, 当你发现自己的时间虚度光阴的时候, 你也必须回头看一看自己这几天到底在干什么, 才能有所改变, 这就需要”总结”这一行为
-什么时候该总结
-当你觉得开始虚度光阴的时候, 你就有必要思考这几天你到底再做什么,
-当没有人监督你的时候, 你就需要自己监督自己, 这就需要”总结”这一行为
-当外界没有压力的时候, 你就需要自己给自己一些压力, 这同样也需要”总结”这一行为
-
-怎么总结就我现在来看, 以我现在的认知, 应该只能停留再每天 或者每几天总结一下这几天从头到尾到底做了什么, 就像流水账一样, 虽然我觉得流水账不太好, 但是这是我现在能做到的最好的总结方式了
-至于以后也可以给自己加一些目标啥的, 这都是后话了, 现在就先从最基本的开始吧
-流水账有一个重点, 就是实事求是, 做了什么就写什么(只要是能写的), 就算是不好的事情也要写, 这样才能让自己看到自己的问题, 才能有所改变
-举个例子
-2024年7月21号晚上在外婆家吃饭
-从2024年7月22号上午到2024年7月24日下午, 去了赣州玩
-2024年7月24号下午整理客厅, 稍微弄家里的卫生, 还有电瓶车(最烦的一集)
-2024年7月25号晚上姐姐回家, 彼女也回家了, 晚上和姐姐的婆家吃饭
-2024年7月26号去中午外婆家吃饭(也是做饭吧), 然后就理了一个寸头!(最大改变), 晚上玩游戏没啥好说的(饭都是姐姐带的)
-2024年7月27号去中午姐姐婆家吃饭, 下午晚上玩游戏(饭都是姐姐带的)
-2024年7月28号去中午外婆家吃饭, 上午赖翔来了, 下午睡觉, (去了配锁, 一把没配到)晚上出去玩了一会, (彼女这个时候拔火罐, 累的要死, 明天就感冒了)
-2024年7月29号去中午姐姐婆家吃饭, 下午睡觉, 晚上玩游戏(姐姐带的饭)
-2024年7月30号自己做饭, 下午睡觉, 晚上玩《不要践踏天使的羽毛》, 晚上彼女开始背单词好好学习了
-
-
-这几天得总结: 除了和彼女一起4天(22-25), 剩下五天, 要么出去吃饭, 要么玩游戏, 要么睡觉, 除了26号理了个寸头, 还打扫了卫生, 30号自己做了饭, 这就是我这几天的总结
-
-但是感觉这样写不是很清晰, 还是有点乱, 要动一点脑子才看得懂
-]]></content>
-      <categories>
-        <category>生活</category>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>思考</tag>
       </tags>
   </entry>
   <entry>
@@ -574,6 +727,45 @@ class Solution:    def rotate(self, nums: List[int], k: int) -&gt; None:        
       </categories>
       <tags>
         <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024-07-31 思考</title>
+    <url>/2024/07/31/%E7%94%9F%E6%B4%BB/2024-07-31-thoughts/</url>
+    <content><![CDATA[晚上的一点小小的思考总结这里的总结不是说我想总结什么东西, 而是是我对”总结”这一行为的思考
+为什么会有这样的思考其一是因为晚上睡不着, 开始思考了, 思考过程中就觉得这几天基本上啥都没做, 从21号回家到现在已经10天了, 什么关键的事情都没有完成, 和我想要的目标差距太大了
+其二是对彼女回家进行考研复习的一点点思考, 看着她打算回家复习, 但是到现在也看着基本上没啥进展, 由此想到了自己这几天的进展, 我这几天也是基本上啥都没做, 想着我们两者是否有一些相同点.
+当你发现自己的钱花的太快了的时候你还会回头看一看自己的账单, 同样的类比, 当你发现自己的时间虚度光阴的时候, 你也必须回头看一看自己这几天到底在干什么, 才能有所改变, 这就需要”总结”这一行为
+什么时候该总结
+当你觉得开始虚度光阴的时候, 你就有必要思考这几天你到底再做什么,
+当没有人监督你的时候, 你就需要自己监督自己, 这就需要”总结”这一行为
+当外界没有压力的时候, 你就需要自己给自己一些压力, 这同样也需要”总结”这一行为
+
+怎么总结就我现在来看, 以我现在的认知, 应该只能停留再每天 或者每几天总结一下这几天从头到尾到底做了什么, 就像流水账一样, 虽然我觉得流水账不太好, 但是这是我现在能做到的最好的总结方式了
+至于以后也可以给自己加一些目标啥的, 这都是后话了, 现在就先从最基本的开始吧
+流水账有一个重点, 就是实事求是, 做了什么就写什么(只要是能写的), 就算是不好的事情也要写, 这样才能让自己看到自己的问题, 才能有所改变
+举个例子
+2024年7月21号晚上在外婆家吃饭
+从2024年7月22号上午到2024年7月24日下午, 去了赣州玩
+2024年7月24号下午整理客厅, 稍微弄家里的卫生, 还有电瓶车(最烦的一集)
+2024年7月25号晚上姐姐回家, 彼女也回家了, 晚上和姐姐的婆家吃饭
+2024年7月26号去中午外婆家吃饭(也是做饭吧), 然后就理了一个寸头!(最大改变), 晚上玩游戏没啥好说的(饭都是姐姐带的)
+2024年7月27号去中午姐姐婆家吃饭, 下午晚上玩游戏(饭都是姐姐带的)
+2024年7月28号去中午外婆家吃饭, 上午赖翔来了, 下午睡觉, (去了配锁, 一把没配到)晚上出去玩了一会, (彼女这个时候拔火罐, 累的要死, 明天就感冒了)
+2024年7月29号去中午姐姐婆家吃饭, 下午睡觉, 晚上玩游戏(姐姐带的饭)
+2024年7月30号自己做饭, 下午睡觉, 晚上玩《不要践踏天使的羽毛》, 晚上彼女开始背单词好好学习了
+
+
+这几天得总结: 除了和彼女一起4天(22-25), 剩下五天, 要么出去吃饭, 要么玩游戏, 要么睡觉, 除了26号理了个寸头, 还打扫了卫生, 30号自己做了饭, 这就是我这几天的总结
+
+但是感觉这样写不是很清晰, 还是有点乱, 要动一点脑子才看得懂
+]]></content>
+      <categories>
+        <category>生活</category>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>思考</tag>
       </tags>
   </entry>
   <entry>
@@ -766,198 +958,6 @@ head 有可能需要改动时，先增加一个 假head，返回的时候直接�
         <tag>LeetCode</tag>
         <tag>双指针</tag>
         <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 中 CMD 和 Entrypoint 的区别</title>
-    <url>/2025/12/18/%E6%8A%80%E6%9C%AF/docker-cmd-vs-entrypoint/</url>
-    <content><![CDATA[Docker 中的 CMD 和 ENTRYPOINT 经常让人迷糊，尤其是同时使用时，更容易出现“命令不按预期执行”“容器秒退”等问题。理解它们的本质差异，是写好 Dockerfile 的关键。
-核心理解：谁是“主角”，谁是“默认参数”在 Docker 里，可以简单地这样理解：
-
-ENTRYPOINT：定义“这个镜像本质上是干什么的”，也就是固定的主命令 &#x2F; 主进程。
-CMD：为这个镜像提供默认参数，或者在没有 ENTRYPOINT 时，提供默认要执行的命令。
-
-当二者同时存在时：
-
-Docker 实际运行的是：ENTRYPOINT + CMD
-且 CMD 会被当成是 ENTRYPOINT 的参数，而不是两个独立执行的命令。
-
-所以：
-ENTRYPOINT [&quot;top&quot;]CMD [&quot;curl&quot;, &quot;--help&quot;]
-
-真实执行的是：
-top curl --help
-
-而不是先执行 top 再执行 curl --help，这也是许多初学者踩坑的地方。
-
-三种经典写法与执行效果Docker 支持两种语法风格：shell 形式 和 exec 形式。这里重点看更推荐、更直观的 exec 形式（JSON 数组写法）。
-1. 只有 CMDFROM alpine:latestRUN apk --no-cache add curlCMD [&quot;curl&quot;, &quot;--help&quot;]
-
-执行：
-docker run --rm my-image
-
-实际命令是：
-curl --help
-
-如果你在 docker run 时追加了命令：
-docker run --rm my-image curl https://example.com
-
-则会完全覆盖 CMD，真实运行的是：
-curl https://example.com
-
-要点：
-
-没有 ENTRYPOINT 时，CMD 是“默认要执行的命令”，可被运行时参数轻松覆盖。
-
-
-2. 只有 ENTRYPOINTFROM alpine:latestRUN apk --no-cache add curlENTRYPOINT [&quot;curl&quot;]
-
-执行：
-docker run --rm my-image --help
-
-真实运行的是：
-curl --help
-
-再看一个例子：
-docker run --rm my-image https://example.com
-
-真实运行的是：
-curl https://example.com
-
-要点：
-
-ENTRYPOINT 定死了“主角”是 curl，无论你在 docker run 后面写什么，都是给 curl 当参数。
-这种写法适合“就是要把这个镜像当作某个命令的专用工具”的场景，例如 CLI 工具封装。
-
-
-3. ENTRYPOINT + CMD 组合这是最容易踩坑但也最强大的用法。
-FROM alpine:latestRUN apk --no-cache add curlENTRYPOINT [&quot;curl&quot;]CMD [&quot;--help&quot;]
-
-不加任何额外参数时：
-docker run --rm my-image
-
-真实运行：
-curl --help
-
-如果在运行时追加参数：
-docker run --rm my-image https://example.com
-
-真实运行：
-curl https://example.com
-
-要点：
-
-CMD 给 ENTRYPOINT 提供默认参数，在不传参时生效。
-一旦运行时传入参数，就会覆盖 CMD，但不会覆盖 ENTRYPOINT。
-
-
-真实踩坑案例：为什么这段 Dockerfile 跑不起来？看下面这个例子（与前面提到的情况一致）：
-FROM alpine:latestRUN apk --no-cache add curl bashENTRYPOINT [ &quot;top&quot; ]CMD [&quot;curl&quot;, &quot;--help&quot;]
-
-表面期望：
-
-ENTRYPOINT 跑 top，保持容器持续运行。
-CMD 跑 curl --help，在启动时打印帮助。
-
-实际发生的事：
-
-Docker 试图执行的命令是：top curl --help
-curl 和 --help 被作为参数传给了 top。
-top 不认识 curl 这样的参数，于是报错退出，容器直接结束。
-
-也就是说：
-
-你原本以为是“先跑 top，再跑 curl –help”；
-实际上是“用 top 去执行 curl –help 这种不合法的参数组合”。
-
-根本原因：CMD 永远不会作为一个“第二条命令”被执行，它只是给 ENTRYPOINT（或默认 shell）提供参数。
-
-想顺序执行多个命令应该怎么写？如果希望：
-
-容器启动时执行一次 curl --help；
-然后再启动一个“持续运行”的程序（例如 top），让容器不退出；
-
-有两种常见写法。
-方案 A：用脚本做真正的入口（推荐）entrypoint.sh：
-#!/bin/bashset -e# 1. 执行一次性命令curl --help# 2. 启动一个长期运行的前台进程top
-
-Dockerfile：
-FROM alpine:latestRUN apk --no-cache add curl bashCOPY entrypoint.sh /entrypoint.shRUN chmod +x /entrypoint.shENTRYPOINT [&quot;/bin/bash&quot;, &quot;/entrypoint.sh&quot;]
-
-特点：
-
-脚本的最后一个前台进程（这里是 top）会成为容器的 PID 1。
-可以在脚本里写完整的业务逻辑、异常处理、日志输出等。
-
-
-方案 B：使用 sh -c 串联命令（方便测试）如果只是做本地实验，图省事，可以直接在 CMD 里写一行 shell：
-FROM alpine:latestRUN apk --no-cache add curl bashCMD [&quot;sh&quot;, &quot;-c&quot;, &quot;curl --help &amp;&amp; top&quot;]
-
-这里没有 ENTRYPOINT，容器启动时会执行：
-sh -c &quot;curl --help &amp;&amp; top&quot;
-
-执行顺序：
-
-先执行 curl --help，退出码为 0。
-再执行 top，top 在前台运行，容器保持存活。
-
-缺点：
-
-复杂逻辑都堆在一行 shell 字符串里，可读性差。
-不利于后期维护，生产环境更推荐脚本方式。
-
-
-常见使用场景与选择建议1. 应用服务镜像（Web&#x2F;后端服务）典型 Dockerfile：
-FROM python:3.12-slimWORKDIR /appCOPY . /appRUN pip install -r requirements.txtCMD [&quot;gunicorn&quot;, &quot;-c&quot;, &quot;gunicorn.conf.py&quot;, &quot;app:app&quot;]
-
-建议：
-
-大多数 Web 服务只用 CMD 就够了。
-如非必要，不要使用 ENTRYPOINT，保持灵活（方便在调试时覆盖为 /bin/bash）。
-
-
-2. CLI &#x2F; 工具型镜像典型 Dockerfile：
-FROM alpine:latestRUN apk --no-cache add curlENTRYPOINT [&quot;curl&quot;]CMD [&quot;--help&quot;]
-
-特征：
-
-这个镜像“就是一个 curl 工具箱”。
-直接 docker run 相当于执行 curl --help。
-传参时可以很自然：
-
-docker run --rm my-curl https://example.com
-
-
-3. 多进程 &#x2F; 复杂启动逻辑典型需求：
-
-启动前做一些准备工作；
-启动一个或多个长期服务；
-监听信号，优雅退出。
-
-推荐：
-
-用脚本做 ENTRYPOINT，在里面管理所有流程。
-或使用进程管理器（如 tini、supervisord），但这已经超出“简单 Dockerfile”的范畴。
-
-
-总结：如何简单记住它们？可以用一句话概括：
-
-ENTRYPOINT 决定“这个镜像是谁”，CMD 决定“它默认怎么干活”。
-
-
-只需要一个默认命令：用 CMD。
-需要一个固定不变的主命令：用 ENTRYPOINT。
-既要固定主命令，又要可配置默认参数：同时用 ENTRYPOINT + CMD，记住 CMD 是参数，不是另一条命令。
-需要顺序执行多条命令：用脚本或 sh -c，不要指望多个 CMD&#x2F;ENTRYPOINT 帮你“自动依次执行”。
-
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Dockerfile</tag>
-        <tag>容器化</tag>
       </tags>
   </entry>
 </search>
