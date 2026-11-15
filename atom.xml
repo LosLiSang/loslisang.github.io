@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, Lisang</rights>
   <subtitle>从感性到因果，从因果到辩证，从辩证到系统</subtitle>
   <title>Lisang's Blog</title>
-  <updated>2026-11-15T09:02:15.918Z</updated>
+  <updated>2026-11-15T09:39:43.982Z</updated>
   <entry>
     <author>
       <name>Lisang</name>
@@ -27,7 +27,7 @@
     <published>2026-11-03T15:59:00.000Z</published>
     <summary>日本节点 + 学生认证，约 720 日元每月订阅 Google AI One Pro</summary>
     <title>5 美元开通 Google AI One Pro</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -44,7 +44,7 @@
     <published>2026-11-01T16:48:35.000Z</published>
     <summary>在 AI 时代重新认识软件工程中的 SOLID 五大设计原则（SRP、OCP、LSP、DIP、ISP）以及 DIP、IoC 与 DI 的区别。</summary>
     <title>软件开发 SOLID 原则</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -53,8 +53,8 @@
     <category term="技术" scheme="https://loslisang.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     <category term="LeetCode" scheme="https://loslisang.github.io/categories/%E6%8A%80%E6%9C%AF/LeetCode/"/>
     <category term="LeetCode" scheme="https://loslisang.github.io/tags/LeetCode/"/>
-    <category term="数组" scheme="https://loslisang.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     <category term="双指针" scheme="https://loslisang.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    <category term="数组" scheme="https://loslisang.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     <content>
       <![CDATA[<h2 id="189-轮转数组"><a href="#189-轮转数组" class="headerlink" title="189. 轮转数组"></a>189. 轮转数组</h2><p><a href="https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-100-liked">题目链接</a></p><p>LeetCode 189题 “轮转数组” (Rotate Array) 是一个非常经典的算法题。通常所谓的“数学解法”主要指代两种 $O(1)$ 空间复杂度的解法：</p><ol><li><strong>环状替换 (Cyclic Replacements)</strong>：这是最硬核的数学解法，涉及到数论中的“最大公约数” (GCD)。</li><li><strong>数组翻转 (Array Reversal)</strong>：这是最巧妙的解法，利用了翻转的性质。</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rotate</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        k = k % <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">rev</span>(<span class="params">nums: <span class="type">List</span>[<span class="built_in">int</span>], start: <span class="built_in">int</span>, end: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">while</span> start &lt; end:</span><br><span class="line">                nums[start], nums[end] = nums[end], nums[start]</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line">                end -= <span class="number">1</span></span><br><span class="line">        rev(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span>)</span><br><span class="line">        rev(nums, <span class="number">0</span>, k - <span class="number">1</span>)</span><br><span class="line">        rev(nums, k, <span class="built_in">len</span>(nums) - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>]]>
     </content>
@@ -63,7 +63,7 @@
     <published>2026-01-04T02:00:00.000Z</published>
     <summary>LeetCode 189. 轮转数组 O(1) 空间复杂度解法笔记</summary>
     <title>LeetCode 189. 轮转数组</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -81,7 +81,7 @@
     <published>2025-12-18T08:19:05.000Z</published>
     <summary>本文深入解析 Docker 中 CMD 和 ENTRYPOINT 的区别与联系，帮助读者理解它们的使用场景及最佳实践，避免常见的坑。</summary>
     <title>Docker 中 CMD 和 Entrypoint 的区别</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -99,7 +99,7 @@
     <published>2025-12-08T16:06:05.000Z</published>
     <summary>本文介绍如何使用高性能的 HTTP 压测工具 wrk，对 API 接口进行压力测试，包括基本用法和进阶的 Lua 脚本编写技巧。</summary>
     <title>如何压测 API 接口？—— 使用 wrk 工具进行高性能压测</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -117,7 +117,7 @@
     <published>2025-12-06T13:00:05.000Z</published>
     <summary>WebDAV 是一个非常经典且实用的协议。简单一句话总结：它把远程的云端存储，通过 HTTP 协议，“映射”成你电脑上的一个本地硬盘。</summary>
     <title>WebDAV 入门指南：把云盘挂载成本地硬盘</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -139,7 +139,7 @@
 <p>给你一个字符串 s ，你需要将它分割成一个或者更多的 平衡 子字符串。比方说，s &#x3D;&#x3D; “ababcc” 那么 (“abab”, “c”, “c”) ，(“ab”, “abc”, “c”) 和 (“ababcc”) 都是合法分割]]>
     </summary>
     <title>LeetCode 3144. 分割字符频率相等的最少子字符串</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -164,7 +164,7 @@
 <li><p>换句话说，这是由所有 0 &lt;&#x3D;]]>
     </summary>
     <title>LeetCode 3134. 找出唯一性数组的中位数</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -184,7 +184,7 @@
 <p>我想变成什么样子的人呢，我自己天天想着有这种习惯那种习]]>
     </summary>
     <title>2024-08-24 思考</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -203,7 +203,7 @@
       <![CDATA[<h2 id="晚上的一点小小的思考"><a href="#晚上的一点小小的思考" class="headerlink" title="晚上的一点小小的思考"></a>晚上的一点小小的思考</h2><h3 id="总结"><a href="#总结" class="headerli]]>
     </summary>
     <title>2024-07-31 思考</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -223,7 +223,7 @@
 <h2 id="这是一篇什么样的]]>
     </summary>
     <title>《海葵》读书笔记</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -242,7 +242,7 @@
       <![CDATA[<h2 id="创新思维夏令营总结"><a href="#创新思维夏令营总结" class="headerlink" title="创新思维夏令营总结"></a>创新思维夏令营总结</h2><p>今天是7月18号，来瓶窑的第12天，总算快要结束了，我只能说这俩周的备课和教学真的是]]>
     </summary>
     <title>7月中小记</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -261,7 +261,7 @@
       <![CDATA[<h2 id="magnet链接是什么"><a href="#magnet链接是什么" class="headerlink" title="magnet链接是什么"></a>magnet链接是什么</h2><h2 id="我想怎么使用磁力链接"><a href="#我想怎么使用磁]]>
     </summary>
     <title>对磁力链接的思考</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -282,7 +282,7 @@
 <h2 id="需求和问题"><a href="#需求和问题" class="headerli]]>
     </summary>
     <title>使用 PicGo 配置 GitHub 图床上传图片</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -291,8 +291,8 @@
     <category term="技术" scheme="https://loslisang.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     <category term="LeetCode" scheme="https://loslisang.github.io/categories/%E6%8A%80%E6%9C%AF/LeetCode/"/>
     <category term="LeetCode" scheme="https://loslisang.github.io/tags/LeetCode/"/>
-    <category term="双指针" scheme="https://loslisang.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     <category term="链表" scheme="https://loslisang.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    <category term="双指针" scheme="https://loslisang.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     <content>
       <![CDATA[<p><a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/">82. 删除排序链表中的重复元素 II</a></p><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个已排序的链表的头 <code>head</code> ， <em>删除原始链表中所有重复数字的节点，只留下不同的数字</em> 。返回 <em>已排序的链表</em> 。</p><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><img src="https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/Pasted%20image%2020240115145926.png" alt="Pasted image 20240115145926"></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先，链表是排序过的，所以相同的节点肯定是连续的，只需要遍历一遍就能把所有相同的节点删除</p><p>记pre为去重链表的遍历节点itr的前一个节点。（我们从前往后遍历，前面的链表就是去除过后的链表）</p><ol><li>如果itr.val &#x3D;&#x3D; itr.next.val，那我们就记flag为当前遍历节点的值，令<code>flag=itr.val</code>，不断向后遍历令itr &#x3D; itr.next，直到，itr.next.val !&#x3D; flag 或者 itr.next &#x3D;&#x3D; null。然后让pre.next &#x3D; itr.next</li><li>如果itr.val !&#x3D; itr.next.val，那么就说明itr不是冗余节点，则不必删除，让pre &#x3D; itr即可</li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">deleteDuplicates</span><span class="params">(ListNode head)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">flag</span> <span class="operator">=</span> -<span class="number">101</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummyNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>();</span><br><span class="line">        dummyNode.next = head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> dummyNode;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">itr</span> <span class="operator">=</span> pre.next;</span><br><span class="line">        <span class="keyword">while</span>(itr != <span class="literal">null</span> &amp;&amp; itr.next != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(itr.val == itr.next.val)&#123;</span><br><span class="line">                flag = itr.val;</span><br><span class="line">                <span class="keyword">while</span>(itr.next != <span class="literal">null</span> &amp;&amp; itr.next.val == flag)&#123;</span><br><span class="line">                    itr = itr.next;</span><br><span class="line">                &#125;</span><br><span class="line">                pre.next = itr.next;</span><br><span class="line">                itr = pre.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                pre = itr;</span><br><span class="line">                itr = itr.next;</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度 O(n), 空间复杂度O(1)</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>链表的题通常需要注意两点：</p><ol><li>舍得用变量，千万别想着节省变量，否则容易被逻辑绕晕</li><li>head 有可能需要改动时，先增加一个 假head，返回的时候直接取 假head.next，这样就不需要为修改 head 增加一大堆逻辑了。</li></ol>]]>
     </content>
@@ -301,7 +301,7 @@
     <published>2024-01-15T11:40:04.000Z</published>
     <summary>82. 删除排序链表中的重复元素 II</summary>
     <title>LeetCode 82. 删除排序链表中的重复元素 II</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -310,8 +310,8 @@
     <category term="技术" scheme="https://loslisang.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     <category term="LeetCode" scheme="https://loslisang.github.io/categories/%E6%8A%80%E6%9C%AF/LeetCode/"/>
     <category term="LeetCode" scheme="https://loslisang.github.io/tags/LeetCode/"/>
-    <category term="双指针" scheme="https://loslisang.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     <category term="链表" scheme="https://loslisang.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    <category term="双指针" scheme="https://loslisang.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     <content>
       <![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个单链表 <code>L</code> 的头节点 <code>head</code> ，单链表 <code>L</code> 表示为：</p><blockquote><p>L0 → L1 → … → Ln - 1 → Ln</p></blockquote><p>请将其重新排列后变为：</p><blockquote><p>L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …</p></blockquote><p>不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。<br><img src="https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/Pasted%20image%2020240115180529%201.png" alt="Pasted image 20240115180529 1"></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="解法一：暴力解"><a href="#解法一：暴力解" class="headerlink" title="解法一：暴力解"></a>解法一：暴力解</h3><p>第i次循环都把最后一个节点移动到第<code>2*i-1</code>个节点后面，当然不是用for循环，只是代码运行的时候链表内部是这样的过程。</p><p>记itr为从前往后遍历的节点，只要itr.next不为null，就一直做以下循环</p><ol><li>找到最后一个节点的前一个节点记为pre，最后一个节点记为last &#x3D; pre.next</li><li>把最后一个节点删除，插入到第itr的后面</li><li>令itr前移动两个单位itr &#x3D; itr.next.next</li></ol><p>步骤2的Code</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pre.next = last.next;</span><br><span class="line">last.next = itr.next;</span><br><span class="line">itr.next = last</span><br></pre></td></tr></table></figure><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">lastPre</span><span class="params">(ListNode head)</span>&#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">itr</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (itr.next.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            itr = itr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> itr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reorderList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">itr</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span>(itr != <span class="literal">null</span> &amp;&amp; itr.next != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> lastPre(head);</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">last</span> <span class="operator">=</span> pre.next;</span><br><span class="line">            pre.next = last.next;</span><br><span class="line">            last.next = itr.next;</span><br><span class="line">            itr.next = last;</span><br><span class="line">            itr = itr.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度 $O(N^2)$</p><h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><ol><li>找中点，拆分链表</li><li>倒置后半段链表</li><li>合并两段链表</li></ol><h4 id="找中点（快慢指针法）"><a href="#找中点（快慢指针法）" class="headerlink" title="找中点（快慢指针法）"></a>找中点（快慢指针法）</h4><h5 id="eg1"><a href="#eg1" class="headerlink" title="eg1"></a>eg1</h5><p>1-&gt;2-&gt;3-&gt;4</p><p>fast:1    slow:1</p><p>fast:3    slow:2</p><p>fast.next.next为null，终止循环</p><p>那么中点就记为mid &#x3D; slow.next 为 3</p><h5 id="eg2"><a href="#eg2" class="headerlink" title="eg2"></a>eg2</h5><p>1-&gt;2-&gt;3-&gt;4-&gt;5</p><p>fast:1    slow:1</p><p>fast:3    slow:2</p><p>fast:5    slow:3</p><p>fast.next为null，终止循环</p><p>那么中点就记为mid &#x3D; slow.next 为 4</p><p>拆分链表，slow.next &#x3D; null;</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">getMid</span><span class="params">(ListNode head)</span>&#123;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head, fast = head;</span><br><span class="line">    <span class="keyword">while</span>(fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>)&#123;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="倒置链表"><a href="#倒置链表" class="headerlink" title="倒置链表"></a>倒置链表</h4><p>记后半段链表为back，前半段链表为front</p><p>倒置链表使用前插法</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">reverse</span><span class="params">(ListNode head)</span>&#123;</span><br><span class="line">     <span class="type">ListNode</span> <span class="variable">itr</span> <span class="operator">=</span> head;</span><br><span class="line">     <span class="type">ListNode</span> <span class="variable">dummyHead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>();</span><br><span class="line">     <span class="keyword">while</span>(itr != <span class="literal">null</span>)&#123;</span><br><span class="line">         <span class="type">ListNode</span> <span class="variable">temp</span> <span class="operator">=</span> itr.next;</span><br><span class="line">         itr.next = dummyHead.next;</span><br><span class="line">         dummyHead.next = itr;</span><br><span class="line">         itr = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="合并链表"><a href="#合并链表" class="headerlink" title="合并链表"></a>合并链表</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">merge</span> <span class="params">(ListNode l1, ListNode l2)</span> &#123;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">head</span> <span class="operator">=</span> l1;</span><br><span class="line">    <span class="keyword">while</span>(l2 != <span class="literal">null</span> &amp;&amp; l1 != <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l1Next</span> <span class="operator">=</span> l1.next;</span><br><span class="line">        l1.next = l2;   </span><br><span class="line">        l2 = l2.next;</span><br><span class="line">        l1.next.next = l1Next;</span><br><span class="line">        l1 = l1.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>链表的赋值，其实和变量交换很类似，都是需要备份的。</li><li>封装好功能的函数，远远比一整段写出来的代码要更好理解！！</li><li>不用害怕定义变量，但是前提是你要知道这个变量是用来做什么的</li></ol>]]>
     </content>
@@ -320,7 +320,7 @@
     <published>2024-01-15T11:32:06.000Z</published>
     <summary>LeetCode 143. 重排链表</summary>
     <title>LeetCode 143. 重排链表</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -338,7 +338,7 @@
     <published>2024-01-14T10:38:40.000Z</published>
     <summary>23年信息奥数教学总结</summary>
     <title>2023 年信息奥数教学总结</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -356,7 +356,7 @@
     <published>2024-01-11T16:00:00.000Z</published>
     <summary>Summary Myself</summary>
     <title>2023 Summary</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,6 +372,6 @@
     <published>2024-01-10T16:00:00.000Z</published>
     <summary>git分布式管理工具使用</summary>
     <title>Git 分布式管理工具使用</title>
-    <updated>2026-11-15T09:02:15.918Z</updated>
+    <updated>2026-11-15T09:39:43.982Z</updated>
   </entry>
 </feed>
