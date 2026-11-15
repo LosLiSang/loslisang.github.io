@@ -104,31 +104,18 @@ cover:
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover:
-    - /img/default_cover/photo_2025-11-26_14-45-37.webp
-    - /img/default_cover/photo_2025-12-06_19-08-03.webp
-    - /img/default_cover/photo_2025-12-06_19-08-15.webp
-    - /img/default_cover/photo_2025-12-06_19-08-21.webp
-    - /img/default_cover/photo_2025-12-06_19-08-24.webp
-    - /img/default_cover/photo_2025-12-06_19-08-31.webp
-    - /img/default_cover/photo_2025-12-06_19-08-34.webp
-    - /img/default_cover/photo_2025-12-06_19-08-40.webp
-    - /img/default_cover/photo_2025-12-06_19-08-44.webp
-    - /img/default_cover/photo_2025-12-06_19-08-47.webp
-    - /img/default_cover/photo_2025-12-06_19-08-52.webp
-    - /img/default_cover/photo_2025-12-06_19-09-04.webp
-    - /img/default_cover/photo_2025-12-06_19-09-19.webp
-    - /img/default_cover/photo_2025-12-06_19-09-28.webp
-    - /img/default_cover/photo_2025-12-06_19-09-32.webp
-    - /img/default_cover/photo_2025-12-06_19-09-37.webp
-    - /img/default_cover/photo_2025-12-06_19-09-40.webp
-    - /img/default_cover/photo_2025-12-06_19-09-44.webp
-    - /img/default_cover/photo_2025-12-06_19-09-52.webp
-    - /img/default_cover/photo_2025-12-06_19-09-55.webp
-    - /img/default_cover/photo_2025-12-06_19-10-05.webp
-    - /img/default_cover/photo_2025-12-06_19-10-08.webp
-    - /img/default_cover/photo_2025-12-06_19-10-14.webp
-    - /img/default_cover/photo_2025-12-06_19-10-18.webp
-    - /img/default_cover/水の骑士.webp
+    - /img/default_cover/cover-01-spring-sakura-lane.webp
+    - /img/default_cover/cover-02-summer-coastal-train.webp
+    - /img/default_cover/cover-03-cozy-sunlit-study.webp
+    - /img/default_cover/cover-04-autumn-maple-shrine.webp
+    - /img/default_cover/cover-05-twilight-rooftop-clouds.webp
+    - /img/default_cover/cover-06-rainy-evening-cafe.webp
+    - /img/default_cover/cover-07-starry-hilltop-observatory.webp
+    - /img/default_cover/cover-08-countryside-summer-meadow.webp
+    - /img/default_cover/cover-09-quiet-wooden-library.webp
+    - /img/default_cover/cover-10-winter-snowy-station.webp
+    - /img/default_cover/cover-11-harbor-morning-breeze.webp
+    - /img/default_cover/cover-12-night-desk-coding-view.webp
 
 # Replace Broken Images
 error_img:
