@@ -6,8 +6,8 @@ tags: [Docker, Dockerfile, 容器化]
 categories: [技术]
 keywords: [Docker, Dockerfile, 容器化]
 description: 本文深入解析 Docker 中 CMD 和 ENTRYPOINT 的区别与联系，帮助读者理解它们的使用场景及最佳实践，避免常见的坑。
-cover: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20251218162100.png
-top_img: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20251218162100.png
+cover: https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20251218162100.png
+top_img: https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20251218162100.png
 comments: 
 toc:
 ---

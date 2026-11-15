@@ -5,7 +5,7 @@ type: novel
 toc: true
 comments: false
 aside: true
-top_img: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png
+top_img: https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png
 ---
 
 <div class="novel-chapter-nav"><div class="nav-prev"><a href="/novels/villainess-pride/05/">&laquo; 上一卷：第三部〔表〕来自深渊的虚空</a></div><div class="nav-center"><a href="/novels/villainess-pride/">返回作品目录</a></div><div class="nav-next"><a href="/novels/villainess-pride/07/">下一卷：第四部〔表〕导引者是双玉 &raquo;</a></div></div>

@@ -6,7 +6,7 @@ tags: [随笔]
 categories: [生活, 随笔]
 keywords: []
 description:
-top_img: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/%E6%B0%B4%E3%81%AE%E9%AA%91%E5%A3%AB.jpg
+top_img: https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/%E6%B0%B4%E3%81%AE%E9%AA%91%E5%A3%AB.jpg
 comments:
 cover:
 toc:

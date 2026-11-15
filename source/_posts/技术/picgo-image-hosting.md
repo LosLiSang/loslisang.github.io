@@ -11,7 +11,7 @@ comments:
 cover:
 toc:
 ---
-![image](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/gentu.png)
+![image](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/gentu.png)
 
 ## 需求和问题
 
@@ -19,7 +19,7 @@ toc:
 
 ~~其实我根本就懒得调整图片的链接~~
 
-例如这张图片: ![image](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/image.png)
+例如这张图片: ![image](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/image.png)
 
 ## 解决办法
 
@@ -30,16 +30,16 @@ toc:
 ### 配置Github图床的步骤
 
 1. 创建Github Repository(**注意仓库 可见性 必须是 public** 否则会因为token过期而访问不到图片)
-![image-1](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/image-1.png)
+![image-1](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/image-1.png)
 2. 创建Personal Access Token [Fine-grained Personal Access Tokens (github.com)](https://github.com/settings/tokens?type=beta)
-![image-2.png](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/!%5Balt%20text%5D%28image-2.png%29.png)
+![image-2.png](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/!%5Balt%20text%5D%28image-2.png%29.png)
 3. 配置Picgo
-![image-2](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/image-2.png)
+![image-2](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/image-2.png)
 
 ### 使用vscode作为md编辑器
 
 如果使用vscode作为md编辑器, 则可以使用插件 `Markdown All in One` 来预览图片, 还有插件 `vs-picgo`来上传图片特别方便, 只要选择之前的配置就可以上传图片了。
-![image-4](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/image-4.png)
+![image-4](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/image-4.png)
 
 #### vs-picgo配置
 

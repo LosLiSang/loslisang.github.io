@@ -5,7 +5,7 @@ type: novel
 toc: true
 comments: false
 aside: true
-top_img: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png
+top_img: https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png
 ---
 
 <div class="novel-chapter-nav"><div class="nav-prev nav-disabled">已是第一卷</div><div class="nav-center"><a href="/novels/villainess-pride/">返回作品目录</a></div><div class="nav-next"><a href="/novels/villainess-pride/02/">下一卷：第一部〔里〕祝福你的爱人 &raquo;</a></div></div>

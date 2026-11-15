@@ -132,7 +132,7 @@ Linux 既有适合桌面的图形化方式，也有适合服务器的命令行�
 
 4. 现在你可以在 `/mnt/pikpak` 目录下直接访问你的 PikPak 云盘文件了。
 效果如下图
-![20251206210916.png](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20251206210916.png)
+![20251206210916.png](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20251206210916.png)
 
 此外还可以用 `rclone copy /本地/源文件 配置名:远程路径 -P` 命令实现本地和云盘之间的文件同步，非常方便。
 

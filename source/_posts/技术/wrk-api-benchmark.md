@@ -181,7 +181,7 @@ end
 
 `lscpu`
 
-![20251209000431.png](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20251209000431.png)
+![20251209000431.png](https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20251209000431.png)
 
 可以看出一共有16个核心，每个核心可以当两个线程使用（Intel 的超线程技术）
 

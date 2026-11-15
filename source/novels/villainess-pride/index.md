@@ -2,13 +2,13 @@
 title: 恶役千金的矜持
 date: 2025-03-18 00:00:00
 type: novel-index
-top_img: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png
+top_img: https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png
 comments: false
 aside: true
 ---
 
 <div class="novel-hero">
-  <img class="novel-cover" src="https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png" alt="恶役千金的矜持封面">
+  <img class="novel-cover" src="https://gcore.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png" alt="恶役千金的矜持封面">
   <div class="novel-meta-body">
     <h2 class="novel-title">恶役千金的矜持</h2>
     <div class="novel-badges">
