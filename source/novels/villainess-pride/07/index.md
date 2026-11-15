@@ -5,7 +5,7 @@ type: novel
 toc: true
 comments: false
 aside: true
-top_img: https://raw.githubusercontent.com/LosLiSang/picgo/main/20250304011220.png
+top_img: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png
 ---
 
 <div class="novel-chapter-nav"><div class="nav-prev"><a href="/novels/villainess-pride/06/">&laquo; 上一卷：第三部〔里〕八大婚姻祝仪祭</a></div><div class="nav-center"><a href="/novels/villainess-pride/">返回作品目录</a></div><div class="nav-next"><a href="/novels/villainess-pride/08/">下一卷：第四部〔里〕其乃森罗万象之故 &raquo;</a></div></div>

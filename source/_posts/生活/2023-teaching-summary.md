@@ -8,7 +8,7 @@ keywords: []
 description: 23年信息奥数教学总结
 top_img:
 comments:
-cover: https://raw.githubusercontent.com/LosLiSang/picgo/main/94748376_p0.jpg
+cover: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/94748376_p0.jpg
 toc:
 ---
 说实话当一个老师还是不错的，但是前提是教的不是小学生。
@@ -51,4 +51,4 @@ toc:
 
 之后我要提升自己的程序设计能力，就是多做OJ题，还要**多写题解**，争取让不懂的人也能看懂，这才是一个做老师的正确姿势。
 
-![102238754_p0](https://raw.githubusercontent.com/LosLiSang/picgo/main/102238754_p0.png)
+![102238754_p0](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/102238754_p0.png)

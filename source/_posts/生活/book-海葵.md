@@ -13,7 +13,7 @@ toc:
 ---
 
 今年第一篇读书笔记
-![20240729102228](https://raw.githubusercontent.com/LosLiSang/picgo/main/20240729102228.png)
+![20240729102228](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20240729102228.png)
 
 ## 这是一篇什么样的书
 

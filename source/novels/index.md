@@ -9,7 +9,7 @@ aside: true
 这里收录个人小说阅读归档与长篇作品目录，独立于技术笔记与日常随笔之外，方便按卷连贯阅读。
 
 <div class="novel-shelf-card">
-  <img class="novel-cover" src="https://raw.githubusercontent.com/LosLiSang/picgo/main/20250304011220.png" alt="恶役千金的矜持封面">
+  <img class="novel-cover" src="https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20250304011220.png" alt="恶役千金的矜持封面">
   <div class="novel-meta-body">
     <h2 class="novel-title">恶役千金的矜持</h2>
     <div class="novel-badges">

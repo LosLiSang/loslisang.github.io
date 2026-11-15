@@ -6,7 +6,7 @@ tags: [总结, 年度总结]
 categories: [生活, 总结]
 keywords: []
 description: Summary Myself
-top_img: https://raw.githubusercontent.com/LosLiSang/picgo/main/cover.jpg?token=AMSNNO45S6QX7MCZGVZPMXTGSAAUE
+top_img: https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/cover.jpg
 comments:
 cover:
 toc:
@@ -20,7 +20,7 @@ toc:
 
 就微信读书上，我就读了8本书《球状闪电》、《蛙》、《可能性的艺术》、《浅薄》、《浪潮之巅》、《置身事内》、《今日简史》等等，还有一些轻小说就不必翻出来讲了。其中大部分都是和社会相关的，批判现实的不公、贫富差距过大，还有讲述历史的优秀书籍。
 
-![置身事内](https://raw.githubusercontent.com/LosLiSang/picgo/main/book.png?token=AMSNNOZFZ6PTPGWBWKFCW3TGSABBA)
+![置身事内](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/book.png)
 
 ### 旅游
 
@@ -48,4 +48,4 @@ toc:
 
 24年，少打一点游戏，如果不行就用VB脚本好好惩罚自己，毕竟VB确实很难关掉。
 
-![roxy](https://raw.githubusercontent.com/LosLiSang/picgo/main/roxy.png?token=AMSNNO2YIGE4Y2VFVFQSLE3GSAAT2)
+![roxy](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/roxy.png)

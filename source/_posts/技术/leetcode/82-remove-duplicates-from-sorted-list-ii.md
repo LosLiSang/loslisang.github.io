@@ -19,7 +19,7 @@ toc:
 
 ### 示例
 
-![Pasted image 20240115145926](https://raw.githubusercontent.com/LosLiSang/picgo/main/Pasted%20image%2020240115145926.png)
+![Pasted image 20240115145926](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/Pasted%20image%2020240115145926.png)
 
 ## 题解
 

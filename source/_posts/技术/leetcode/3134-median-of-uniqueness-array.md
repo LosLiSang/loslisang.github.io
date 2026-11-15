@@ -77,7 +77,7 @@ impl Solution {
 
 初步得到的代码, 但是很显然, `O(n*n)`的时间复杂度, 超时了
 
-![20240827145806](https://raw.githubusercontent.com/LosLiSang/picgo/main/20240827145806.png)
+![20240827145806](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/20240827145806.png)
 
 如何优化?
 

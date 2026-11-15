@@ -23,7 +23,7 @@ mathjax: true
 > L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 
 不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-![Pasted image 20240115180529 1](https://raw.githubusercontent.com/LosLiSang/picgo/main/Pasted%20image%2020240115180529%201.png)
+![Pasted image 20240115180529 1](https://fastly.jsdelivr.net/gh/LosLiSang/picgo@main/Pasted%20image%2020240115180529%201.png)
 
 ## 题解
 
